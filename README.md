@@ -3,7 +3,7 @@
 
 - I am working on a big project: [Voice Assistant: Stewart](https://github.com/ilyamiro/StewartAlpha)
 
-- 🌱 I’m currently learning **C++, Python, Linux**
+- 🌱 I’m currently learning **C/C++, Python, Linux, Shell, OSINT**
 
 - 📫 How to reach me **ilyamiro.workemail@gmail.com**
 
