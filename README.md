@@ -1,5 +1,5 @@
 <h1 align="center">Hello, i am ilyamiro</h1>
-<h3 align="center">I am a young developer from Ukraine</h3>
+<h3 align="center">I am a young developer</h3>
 
 - I am working on a big project: [Voice Assistant: Stewart](https://github.com/ilyamiro/StewartAlpha)
 
