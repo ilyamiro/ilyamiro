@@ -1,7 +1,7 @@
 <h1 align="center">Hello, i am ilyamiro</h1>
 <h3 align="center">I am a young developer with lots of enthusiasm</h3>
 
-- I am working on a big project: [Voice Assistant: Stewart](https://github.com/ilyamiro/StewartAlpha)
+- I am working on a big project: [Stewart: VA](https://github.com/ilyamiro/Stewart)
 
 - 🌱 I’m currently learning **C/C++, Python, Linux, Shell, OSINT**
 
