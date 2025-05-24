@@ -1,9 +1,7 @@
 <h1 align="center">Hello, i am ilyamiro</h1>
 <h3 align="center">I am a young developer with lots of enthusiasm</h3>
 
-- I am working on a big project: [Stewart: VA](https://github.com/ilyamiro/Stewart)
-
-- 🌱 I’m currently learning **C/C++, Python, Linux, Shell, OSINT**
+- I am working on a big project: [Stewart](https://github.com/ilyamiro/stewart)
 
 <h3>📫 How to reach me:</h3>
 
