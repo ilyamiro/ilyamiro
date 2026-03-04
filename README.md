@@ -1,7 +1,5 @@
 <h1 align="center">Hello, i am ilyamiro</h1>
-<h3 align="center">I am a young developer with lots of enthusiasm</h3>
-
-- I am working on a big project: [Stewart](https://github.com/ilyamiro/stewart)
+<h3 align="center">I am using <a href="https://github.com/ilyamiro/nixos-configuration">NixOS</a></h3>
 
 <h3>📫 How to reach me:</h3>
 
