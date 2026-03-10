@@ -8,7 +8,7 @@
 - Discord: **ilyamiro** <br>
 - **[YouTube](https://www.youtube.com/@stewart.github)**
 
-![GitHub Stats](https://ghstats.dev/api/card?username=ilyamiro)
+[![GitHub Stats](https://ghstats.dev/api/card?username=ilyamiro&theme=catppuccin&hide=trend%2Cavg%2Cactive_day%2Cgrade%2Ccontributions%2Crepos%2Cfollowers&custom_title=Stats&border_radius=10)](https://github.com/rowkav09/GitHub-profile-stats)
 
 <h3 align="center">
   
