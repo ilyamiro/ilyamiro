@@ -41,21 +41,29 @@
   }}>
     <div style={{
       display: 'flex',
-      width: '72px',
-      height: '72px',
+      width: '76px',
+      height: '76px',
       borderRadius: '50%',
-      padding: '2px',
       background: 'linear-gradient(135deg, #89b4fa, #cba6f7, #f38ba8)',
+      alignItems: 'center',
+      justifyContent: 'center',
     }}>
-      <img
-        src="https://github.com/ilyamiro.png"
-        width="68"
-        height="68"
-        style={{
-          borderRadius: '50%',
-          border: '2px solid #1e1e2e',
-        }}
-      />
+      <div style={{
+        display: 'flex',
+        width: '70px',
+        height: '70px',
+        borderRadius: '50%',
+        overflow: 'hidden',
+        border: '2px solid #1e1e2e',
+      }}>
+        <img
+          src="https://github.com/ilyamiro.png"
+          style={{
+            width: '70px',
+            height: '70px',
+          }}
+        />
+      </div>
     </div>
 
     <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
@@ -117,10 +125,10 @@
   overflow: 'hidden',
 }}>
   {[
-    { icon: '📧', label: 'Email',    value: 'ilyamiro.work@gmail.com', color: '#a6e3a1', accent: '#a6e3a1' },
-    { icon: '⌲', label: 'Telegram', value: '@sacrificeit',            color: '#89b4fa', accent: '#89b4fa' },
-    { icon: '🌐', label: 'Reddit',   value: 'u/ilyamiro1',             color: '#cba6f7', accent: '#cba6f7' },
-    { icon: '▶️', label: 'YouTube',  value: '@stewart.github',         color: '#f38ba8', accent: '#f38ba8' },
+    { label: 'Email',    value: 'ilyamiro.work@gmail.com', color: '#a6e3a1', accent: '#a6e3a1' },
+    { label: 'Telegram', value: '@sacrificeit',            color: '#89b4fa', accent: '#89b4fa' },
+    { label: 'Reddit',   value: 'u/ilyamiro1',             color: '#cba6f7', accent: '#cba6f7' },
+    { label: 'YouTube',  value: '@stewart.github',         color: '#f38ba8', accent: '#f38ba8' },
   ].map((item, i) => (
     <div key={i} style={{
       display: 'flex',
@@ -145,18 +153,15 @@
         opacity: '0.6',
       }} />
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-        {item.icon && <span style={{ fontSize: '14px' }}>{item.icon}</span>}
-        <span style={{
-          fontSize: '11px',
-          color: '#6c7086',
-          fontWeight: '700',
-          letterSpacing: '1.2px',
-          textTransform: 'uppercase',
-        }}>
-          {item.label}
-        </span>
-      </div>
+      <span style={{
+        fontSize: '11px',
+        color: '#6c7086',
+        fontWeight: '700',
+        letterSpacing: '1.2px',
+        textTransform: 'uppercase',
+      }}>
+        {item.label}
+      </span>
 
       <span style={{
         fontSize: '13px',
