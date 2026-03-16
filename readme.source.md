@@ -118,9 +118,9 @@
 }}>
   {[
     { icon: '📧', label: 'Email',    value: 'ilyamiro.work@gmail.com', color: '#a6e3a1', accent: '#a6e3a1' },
-    { icon: null, label: 'Telegram', value: '@sacrificeit',            color: '#89b4fa', accent: '#89b4fa' },
-    { icon: null, label: 'Reddit',   value: 'u/ilyamiro1',             color: '#cba6f7', accent: '#cba6f7' },
-    { icon: null, label: 'YouTube',  value: '@stewart.github',         color: '#f38ba8', accent: '#f38ba8' },
+    { icon: '⌲', label: 'Telegram', value: '@sacrificeit',            color: '#89b4fa', accent: '#89b4fa' },
+    { icon: '🌐', label: 'Reddit',   value: 'u/ilyamiro1',             color: '#cba6f7', accent: '#cba6f7' },
+    { icon: '▶️', label: 'YouTube',  value: '@stewart.github',         color: '#f38ba8', accent: '#f38ba8' },
   ].map((item, i) => (
     <div key={i} style={{
       display: 'flex',
