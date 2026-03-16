@@ -1,89 +1,167 @@
-```aura width=850 height=450
+```aura width=800 height=200
 <div style={{
   display: 'flex',
   flexDirection: 'column',
+  alignItems: 'center',
   justifyContent: 'center',
+  width: '100%',
+  height: '100%',
+  background: 'linear-gradient(135deg, #1e1e2e 0%, #181825 100%)',
+  borderRadius: '16px',
+  border: '1px solid #313244',
+  gap: '12px',
+}}>
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: '14px',
+  }}>
+    <div style={{
+      display: 'flex',
+      width: '56px',
+      height: '56px',
+      borderRadius: '50%',
+      background: 'linear-gradient(135deg, #89b4fa, #cba6f7)',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: '28px',
+    }}>
+      👾
+    </div>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '4px',
+    }}>
+      <span style={{
+        fontSize: '36px',
+        fontWeight: '700',
+        color: '#cdd6f4',
+        letterSpacing: '-0.5px',
+      }}>
+        ilyamiro
+      </span>
+      <span style={{
+        fontSize: '15px',
+        color: '#89b4fa',
+        fontWeight: '500',
+        letterSpacing: '0.5px',
+      }}>
+        NixOS enjoyer · open source
+      </span>
+    </div>
+  </div>
+  <div style={{
+    display: 'flex',
+    gap: '10px',
+    marginTop: '4px',
+  }}>
+    {['nix', 'python', 'rust', 'linux'].map((tag) => (
+      <div key={tag} style={{
+        display: 'flex',
+        padding: '3px 12px',
+        borderRadius: '999px',
+        background: '#313244',
+        border: '1px solid #45475a',
+        color: '#bac2de',
+        fontSize: '12px',
+        fontWeight: '600',
+        letterSpacing: '0.3px',
+      }}>
+        {tag}
+      </div>
+    ))}
+  </div>
+</div>
+```
+
+```aura width=800 height=150
+<div style={{
+  display: 'flex',
   alignItems: 'center',
   width: '100%',
   height: '100%',
-  backgroundColor: '#1e1e2e',
-  fontFamily: 'sans-serif',
-  borderRadius: '24px',
-  border: '2px solid #313244',
-  color: '#cdd6f4'
+  background: '#1e1e2e',
+  borderRadius: '16px',
+  border: '1px solid #313244',
+  padding: '0 32px',
+  gap: '0',
 }}>
-  <style>
-    {`
-      @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
-      }
-      @keyframes pulse {
-        0% { opacity: 0.8; }
-        50% { opacity: 1; transform: scale(1.02); }
-        100% { opacity: 0.8; }
-      }
-      #hero-text { animation: float 6s ease-in-out infinite; }
-      #nixos-badge { animation: pulse 3s infinite; }
-    `}
-  </style>
-
-  <div id="hero-text" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-    <h1 style={{ fontSize: '64px', fontWeight: '800', margin: '0', color: '#cba6f7', letterSpacing: '-1.5px' }}>
-      Hello, I am ilyamiro
-    </h1>
-    
-    <div id="nixos-badge" style={{ 
-      marginTop: '24px', 
-      display: 'flex', 
-      alignItems: 'center', 
-      backgroundColor: '#89b4fa', 
-      color: '#11111b', 
-      padding: '12px 32px', 
-      borderRadius: '99px', 
-      fontSize: '28px', 
-      fontWeight: 'bold',
-      boxShadow: '0 8px 16px rgba(0,0,0,0.2)'
+  {[
+    { icon: '📧', label: 'Email', value: 'ilyamiro.work@gmail.com', color: '#a6e3a1' },
+    { icon: '✈️', label: 'Telegram', value: '@sacrificeit', color: '#89b4fa' },
+    { icon: '🎮', label: 'Discord', value: 'ilyamiro', color: '#cba6f7' },
+    { icon: '▶️', label: 'YouTube', value: '@stewart.github', color: '#f38ba8' },
+  ].map((item, i) => (
+    <div key={i} style={{
+      display: 'flex',
+      flex: '1',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '6px',
+      borderRight: i < 3 ? '1px solid #313244' : 'none',
+      padding: '0 8px',
     }}>
-      I am using NixOS ❄️
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '6px',
+      }}>
+        <span style={{ fontSize: '18px' }}>{item.icon}</span>
+        <span style={{ fontSize: '13px', color: '#6c7086', fontWeight: '600', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+          {item.label}
+        </span>
+      </div>
+      <span style={{
+        fontSize: '13px',
+        color: item.color,
+        fontWeight: '500',
+      }}>
+        {item.value}
+      </span>
     </div>
-  </div>
-
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '48px' }}>
-    <h3 style={{ fontSize: '24px', color: '#a6e3a1', fontWeight: '600', margin: '0 0 20px 0' }}>📫 How to reach me</h3>
-    <div style={{ display: 'flex', gap: '20px' }}>
-      <div style={{ display: 'flex', backgroundColor: '#313244', padding: '16px 24px', borderRadius: '16px', fontSize: '20px', color: '#f38ba8', borderBottom: '4px solid #f38ba8' }}>
-        📧 ilyamiro.work@gmail.com
-      </div>
-      <div style={{ display: 'flex', backgroundColor: '#313244', padding: '16px 24px', borderRadius: '16px', fontSize: '20px', color: '#74c7ec', borderBottom: '4px solid #74c7ec' }}>
-        ✈️ Telegram: @sacrificeit
-      </div>
-      <div style={{ display: 'flex', backgroundColor: '#313244', padding: '16px 24px', borderRadius: '16px', fontSize: '20px', color: '#b4befe', borderBottom: '4px solid #b4befe' }}>
-        👾 Discord: ilyamiro
-      </div>
-    </div>
-  </div>
+  ))}
 </div>
-
 ```
 
-<div align="center">
+[![GitHub Stats](https://ghstats.dev/api/card?username=ilyamiro&theme=catppuccin&hide=trend%2Cavg%2Cactive_day%2Cgrade%2Ccontributions%2Crepos%2Cfollowers&custom_title=Stats&border_radius=10)](https://github.com/ilyamiro)
 
-
-
-
-<a href="mailto:ilyamiro.work@gmail.com"><b>Email</b></a> •
-<a href="https://t.me/sacrificeit"><b>Telegram</b></a> •
-<a href="https://www.youtube.com/@stewart.github"><b>YouTube</b></a> •
-<a href="https://github.com/ilyamiro/nixos-configuration"><b>NixOS Config</b></a>
-
-
-
-
-
+```aura width=800 height=80
+<div style={{
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  height: '100%',
+  background: '#1e1e2e',
+  borderRadius: '16px',
+  border: '1px solid #313244',
+  gap: '16px',
+}}>
+  <div style={{
+    display: 'flex',
+    width: '6px',
+    height: '6px',
+    borderRadius: '50%',
+    background: '#a6e3a1',
+    boxShadow: '0 0 8px #a6e3a1',
+  }} />
+  <span style={{
+    fontSize: '16px',
+    color: '#bac2de',
+    fontWeight: '500',
+    letterSpacing: '0.3px',
+  }}>
+    thanks for stopping by 👍
+  </span>
+  <div style={{
+    display: 'flex',
+    width: '6px',
+    height: '6px',
+    borderRadius: '50%',
+    background: '#a6e3a1',
+    boxShadow: '0 0 8px #a6e3a1',
+  }} />
 </div>
-
 ```
-
-
