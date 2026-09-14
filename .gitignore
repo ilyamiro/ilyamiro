@@ -1,0 +1,4 @@
+.npm-global/
+.npm-cache/
+.direnv/
+result
