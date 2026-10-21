@@ -6,29 +6,81 @@
   "scheme": "vibrant",
   "motion": true,
   "iconFill": true,
-  "order": ["hero", "socials", "buttons"],
-  "hidden": ["about", "stack", "projects", "stats", "streak", "wave"],
+  "order": [
+    "hero",
+    "socials"
+  ],
+  "hidden": [
+    "about",
+    "stack",
+    "projects",
+    "stats",
+    "streak",
+    "wave",
+    "buttons"
+  ],
   "hero": {
     "greeting": "Hi, I'm",
     "name": "Ilyamiro",
     "subtitle": "open-source developer",
     "typing": false,
     "avatarShape": "cookie12",
-    "chips": [
-      { "icon": "brand:discord", "label": "ilyamiro" }
-    ]
+    "chips": []
   },
-  "about": { "title": "About me", "items": [] },
-  "stack": { "title": "Tech stack", "groups": [] },
-  "projects": { "source": "pinned", "repos": [], "overrides": {}, "empty": "", "fork": "Fork" },
-  "stats": { "title": "GitHub activity", "stars": "Stars earned", "contributions": "Contributions this year", "repos": "Public repos", "followers": "Followers", "calendar": "Last 21 days", "weekdays": "SMTWTFS", "languages": "Languages", "showLanguages": false },
-  "streak": { "title": "Streak", "current": "Current streak", "longest": "Longest this year", "days": "days" },
+  "about": {
+    "title": "About me",
+    "items": []
+  },
+  "stack": {
+    "title": "Tech stack",
+    "groups": []
+  },
+  "projects": {
+    "source": "pinned",
+    "repos": [],
+    "overrides": {},
+    "empty": "",
+    "fork": "Fork"
+  },
+  "stats": {
+    "title": "GitHub activity",
+    "stars": "Stars earned",
+    "contributions": "Contributions this year",
+    "repos": "Public repos",
+    "followers": "Followers",
+    "calendar": "Last 21 days",
+    "weekdays": "SMTWTFS",
+    "languages": "Languages",
+    "showLanguages": false
+  },
+  "streak": {
+    "title": "Streak",
+    "current": "Current streak",
+    "longest": "Longest this year",
+    "days": "days"
+  },
   "socials": {
     "items": [
-      { "icon": "brand:github", "url": "https://github.com/ilyamiro" },
-      { "icon": "brand:telegram", "url": "https://t.me/sacrificeit" },
-      { "icon": "brand:youtube", "url": "https://www.youtube.com/@ilyamiro21" },
-      { "icon": "brand:reddit", "url": "https://www.reddit.com/user/ilyamiro1" }
+      {
+        "icon": "brand:telegram",
+        "url": "https://t.me/sacrificeit"
+      },
+      {
+        "icon": "brand:youtube",
+        "url": "https://www.youtube.com/@ilyamiro21"
+      },
+      {
+        "icon": "brand:reddit",
+        "url": "https://www.reddit.com/user/ilyamiro1"
+      },
+      {
+        "icon": "brand:discordtag",
+        "url": ""
+      },
+      {
+        "icon": "brand:mailtag",
+        "url": "mailto:ilyamiro.work@gmail.com"
+      }
     ],
     "variant": "chip",
     "fill": "tonal",
@@ -36,8 +88,6 @@
   },
   "buttons": {
     "card": true,
-    "items": [
-      { "icon": "mail", "label": "ilyamiro.work@gmail.com", "url": "mailto:ilyamiro.work@gmail.com", "style": "tonal" }
-    ]
+    "items": []
   }
 }

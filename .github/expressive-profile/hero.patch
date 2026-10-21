@@ -1,0 +1,79 @@
+diff --git a/src/render/blocks.ts b/src/render/blocks.ts
+index 7527dbb..0b10ede 100644
+--- a/src/render/blocks.ts
++++ b/src/render/blocks.ts
+@@ -56,32 +56,31 @@ function sectionTitle(x: number, y: number, label: string, ic: string, { p, i }:
+ // Hero
+ export function hero(ctx: Ctx, avatar: string | null) {
+   const { c, p, i } = ctx;
+-  const h = 300;
++  const h = 210;
+   const b = [`<clipPath id="card"><rect width="${W}" height="${h}" rx="32"/></clipPath>`];
+   b.push(`<rect width="${W}" height="${h}" rx="32" fill="${p.surfaceContainer}"/>`);
+   b.push('<g clip-path="url(#card)">');
+-  b.push(`<path class="spin" d="${shape("flower", 780, 30, 150)}" fill="${p.primaryContainer}"/>`);
+-  b.push(`<path class="bob" d="${shape("clover", 690, 292, 62)}" fill="${p.tertiaryContainer}"/>`);
+-  b.push(`<path class="spin-r" d="${shape("sunny", 812, 236, 34)}" fill="${p.secondaryContainer}"/>`);
++  b.push(`<path class="spin" d="${shape("flower", 800, 16, 74)}" fill="${p.primaryContainer}"/>`);
++  b.push(`<path class="bob" d="${shape("clover", 716, 212, 30)}" fill="${p.tertiaryContainer}"/>`);
++  b.push(`<path class="spin-r" d="${shape("sunny", 820, 180, 16)}" fill="${p.secondaryContainer}"/>`);
+   b.push("</g>");
+-  const cx = 150;
+-  const cy = 150;
++  const cx = 118;
++  const cy = 105;
+   const frame = c.hero.avatarShape;
+-  b.push(`<path class="spin" d="${shape("sunny", cx, cy, 112)}" fill="${p.primary}" opacity=".9"/>`);
+-  b.push(`<clipPath id="ava"><path d="${shape(frame, cx, cy, 98)}"/></clipPath>`);
+-  b.push(`<path d="${shape(frame, cx, cy, 102)}" fill="${p.surfaceContainer}"/>`);
++  b.push(`<clipPath id="ava"><path d="${shape(frame, cx, cy, 78)}"/></clipPath>`);
++  b.push(`<path d="${shape(frame, cx, cy, 82)}" fill="${p.primary}"/>`);
+   if (avatar) {
+-    b.push(`<g class="fade"><image href="${avatar}" x="${cx - 100}" y="${cy - 100}" width="200" height="200" clip-path="url(#ava)" preserveAspectRatio="xMidYMid slice"/></g>`);
++    b.push(`<g class="fade"><image href="${avatar}" x="${cx - 80}" y="${cy - 80}" width="160" height="160" clip-path="url(#ava)" preserveAspectRatio="xMidYMid slice"/></g>`);
+   } else {
+-    b.push(`<path d="${shape(frame, cx, cy, 98)}" fill="${p.primaryContainer}"/>`);
+-    b.push(icon(i, "person", cx - 44, cy - 44, 88, p.onPrimaryContainer));
++    b.push(`<path d="${shape(frame, cx, cy, 78)}" fill="${p.primaryContainer}"/>`);
++    b.push(icon(i, "person", cx - 36, cy - 36, 72, p.onPrimaryContainer));
+   }
+-  const x = 294;
++  const x = 230;
+   const name = c.hero.name || c.login;
+   const room = W - x - 40;
+-  const size = Math.min(68, room / Math.max(1, textWidth(name, 1, 700)));
+-  b.push(txt(x, 92, c.hero.greeting, 22, p.onSurfaceVariant, { weight: 500, cls: "up", delay: 0.1 }));
+-  b.push(pop(txt(x - 3, 156, name, size, p.onSurface, { cls: "wght" }), 0.2, "up"));
++  const size = Math.min(58, room / Math.max(1, textWidth(name, 1, 700)));
++  b.push(txt(x, 72, c.hero.greeting, 20, p.onSurfaceVariant, { weight: 500, cls: "up", delay: 0.1 }));
++  b.push(pop(txt(x - 3, 128, name, size, p.onSurface, { cls: "wght" }), 0.2, "up"));
+   const lines = wrap(c.hero.subtitle, 19, 430, 400, 2);
+   let extra = "";
+   if (c.hero.typing && c.motion && lines.join("")) {
+@@ -89,7 +88,7 @@ export function hero(ctx: Ctx, avatar: string | null) {
+     b.push(body);
+     extra = css;
+   } else lines.forEach((line, n) => {
+-    b.push(txt(x, 194 + n * 26, line, 19, p.onSurfaceVariant, { cls: "up", delay: 0.35 + n * 0.08 }));
++    b.push(txt(x, 160 + n * 26, line, 19, p.onSurfaceVariant, { cls: "up", delay: 0.35 + n * 0.08 }));
+   });
+   let cx2 = x;
+   c.hero.chips.forEach((item, n) => {
+@@ -118,7 +117,7 @@ function typing(lines: string[], x: number, p: Palette): [string, string] {
+     `<animate attributeName="${attr}" values="${values.join(";")}" keyTimes="${times}" calcMode="discrete" dur="${dur.toFixed(2)}s" fill="freeze"/>`;
+   const out: string[] = [];
+   lines.forEach((line, li) => {
+-    const y = 194 + li * 26;
++    const y = 160 + li * 26;
+     const full = textWidth(line, 19) + 4;
+     const widths = ["0", ...ks.map((k) => revealed(li, k).toFixed(1))];
+     out.push(`<clipPath id="tc${li}"><rect x="${x - 2}" y="${y - 22}" width="${full}" height="30">${smil("width", widths)}</rect></clipPath>`);
+@@ -128,7 +127,7 @@ function typing(lines: string[], x: number, p: Palette): [string, string] {
+   const pos = (k: number) => {
+     let li = chars.findIndex((_, i) => k <= starts[i] + chars[i].length);
+     if (li < 0) li = last;
+-    return [x + revealed(li, k), 194 + li * 26];
++    return [x + revealed(li, k), 160 + li * 26];
+   };
+   const [fx, fy] = pos(n);
+   const moves = [pos(0), ...ks.map(pos)].map(([cx, cy]) => `${(cx - fx).toFixed(1)} ${cy - fy}`);

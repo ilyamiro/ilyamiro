@@ -9,6 +9,8 @@ on:
     paths:
       - profile.json
       - banner.png
+      - .profile/icons.json
+      - .github/expressive-profile/**
       - .github/workflows/expressive-profile.yml
 
 permissions:
@@ -24,19 +26,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build patched renderer
+        run: |
+          git clone --quiet https://github.com/metawka/expressive-profile.git "$RUNNER_TEMP/ep"
+          cd "$RUNNER_TEMP/ep"
+          git checkout --quiet "$EP_REF"
+          git apply "$GITHUB_WORKSPACE/.github/expressive-profile/hero.patch"
+          npm ci --silent
+          npm run assets --silent
+          npm run renderer --silent
+
       - name: Render profile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git clone --quiet https://github.com/metawka/expressive-profile.git "$RUNNER_TEMP/ep"
-          git -C "$RUNNER_TEMP/ep" checkout --quiet "$EP_REF"
-          node "$RUNNER_TEMP/ep/action/render.mjs"
+        run: node "$RUNNER_TEMP/ep/action/render.mjs"
 
-      - name: Add banner
-        run: |
-          sed -i '1a\
-          \
-          <img src="banner.png" width="100%" alt="Serpantinum">' README.md
+      - name: Post-process README
+        run: .github/expressive-profile/postprocess.sh
 
       - name: Commit
         run: |

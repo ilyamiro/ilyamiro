@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="137.75" height="88" viewBox="0 0 137.75 88" role="img" aria-label=""><title></title><style>text{font-family:G,R,'Google Sans','Segoe UI',Roboto,sans-serif;font-variation-settings:'ROND' 100}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="73.5" height="88" viewBox="0 0 73.5 88" role="img" aria-label=""><title></title><style>text{font-family:G,R,'Google Sans','Segoe UI',Roboto,sans-serif;font-variation-settings:'ROND' 100}
 .up{animation:up .8s cubic-bezier(.05,.7,.1,1) both}
 .pop{transform-box:fill-box;transform-origin:center;animation:pop .6s cubic-bezier(.34,1.56,.64,1) both}
 .fade{animation:fade .9s ease both}
@@ -18,4 +18,4 @@
 @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes wght{from{font-variation-settings:'ROND' 100,'wght' 400}to{font-variation-settings:'ROND' 100,'wght' 760}}
 @keyframes wave{from{transform:translateX(0)}to{transform:translateX(-48px)}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style><rect x="-40" width="177.8" height="88" rx="32" fill="#1d1a24"/></svg>
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style><rect x="-40" width="113.5" height="88" rx="32" fill="#1d1a24"/></svg>
