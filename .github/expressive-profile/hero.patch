@@ -1,8 +1,8 @@
 diff --git a/src/render/blocks.ts b/src/render/blocks.ts
-index 7527dbb..0b10ede 100644
+index 7527dbb..53e26fa 100644
 --- a/src/render/blocks.ts
 +++ b/src/render/blocks.ts
-@@ -56,32 +56,31 @@ function sectionTitle(x: number, y: number, label: string, ic: string, { p, i }:
+@@ -56,32 +56,30 @@ function sectionTitle(x: number, y: number, label: string, ic: string, { p, i }:
  // Hero
  export function hero(ctx: Ctx, avatar: string | null) {
    const { c, p, i } = ctx;
@@ -16,7 +16,7 @@ index 7527dbb..0b10ede 100644
 -  b.push(`<path class="spin-r" d="${shape("sunny", 812, 236, 34)}" fill="${p.secondaryContainer}"/>`);
 +  b.push(`<path class="spin" d="${shape("flower", 800, 16, 74)}" fill="${p.primaryContainer}"/>`);
 +  b.push(`<path class="bob" d="${shape("clover", 716, 212, 30)}" fill="${p.tertiaryContainer}"/>`);
-+  b.push(`<path class="spin-r" d="${shape("sunny", 820, 180, 16)}" fill="${p.secondaryContainer}"/>`);
++  b.push(`<path class="spin-r" d="${shape("sunny", 813, 177, 24)}" fill="${p.secondaryContainer}"/>`);
    b.push("</g>");
 -  const cx = 150;
 -  const cy = 150;
@@ -38,33 +38,40 @@ index 7527dbb..0b10ede 100644
 +    b.push(icon(i, "person", cx - 36, cy - 36, 72, p.onPrimaryContainer));
    }
 -  const x = 294;
-+  const x = 230;
++  const x = 510;
    const name = c.hero.name || c.login;
-   const room = W - x - 40;
+-  const room = W - x - 40;
 -  const size = Math.min(68, room / Math.max(1, textWidth(name, 1, 700)));
 -  b.push(txt(x, 92, c.hero.greeting, 22, p.onSurfaceVariant, { weight: 500, cls: "up", delay: 0.1 }));
 -  b.push(pop(txt(x - 3, 156, name, size, p.onSurface, { cls: "wght" }), 0.2, "up"));
++  const room = 560;
 +  const size = Math.min(58, room / Math.max(1, textWidth(name, 1, 700)));
-+  b.push(txt(x, 72, c.hero.greeting, 20, p.onSurfaceVariant, { weight: 500, cls: "up", delay: 0.1 }));
-+  b.push(pop(txt(x - 3, 128, name, size, p.onSurface, { cls: "wght" }), 0.2, "up"));
++  b.push(pop(txt(x, 84, name, size, p.onSurface, { cls: "wght", anchor: "middle" }), 0.2, "up"));
    const lines = wrap(c.hero.subtitle, 19, 430, 400, 2);
    let extra = "";
    if (c.hero.typing && c.motion && lines.join("")) {
-@@ -89,7 +88,7 @@ export function hero(ctx: Ctx, avatar: string | null) {
+@@ -89,11 +87,12 @@ export function hero(ctx: Ctx, avatar: string | null) {
      b.push(body);
      extra = css;
    } else lines.forEach((line, n) => {
 -    b.push(txt(x, 194 + n * 26, line, 19, p.onSurfaceVariant, { cls: "up", delay: 0.35 + n * 0.08 }));
-+    b.push(txt(x, 160 + n * 26, line, 19, p.onSurfaceVariant, { cls: "up", delay: 0.35 + n * 0.08 }));
++    b.push(txt(x, 114 + n * 26, line, 19, p.onSurfaceVariant, { cls: "up", delay: 0.35 + n * 0.08, anchor: "middle" }));
    });
-   let cx2 = x;
+-  let cx2 = x;
++  const widths = c.hero.chips.map((item) => chip(i, p, 0, 0, item.label, { icon: item.icon })[1]);
++  let cx2 = x - (widths.reduce((a, w) => a + w, 0) + 8 * Math.max(0, widths.length - 1)) / 2;
    c.hero.chips.forEach((item, n) => {
+-    const [g, w] = chip(i, p, cx2, 236, item.label, { icon: item.icon, delay: 0.6 + n * 0.1, style: "tonal" });
++    const [g, w] = chip(i, p, cx2, 134, item.label, { icon: item.icon, delay: 0.6 + n * 0.1, style: "tonal" });
+     if (cx2 + w > W - 24) return;
+     b.push(g);
+     cx2 += w + 8;
 @@ -118,7 +117,7 @@ function typing(lines: string[], x: number, p: Palette): [string, string] {
      `<animate attributeName="${attr}" values="${values.join(";")}" keyTimes="${times}" calcMode="discrete" dur="${dur.toFixed(2)}s" fill="freeze"/>`;
    const out: string[] = [];
    lines.forEach((line, li) => {
 -    const y = 194 + li * 26;
-+    const y = 160 + li * 26;
++    const y = 114 + li * 26;
      const full = textWidth(line, 19) + 4;
      const widths = ["0", ...ks.map((k) => revealed(li, k).toFixed(1))];
      out.push(`<clipPath id="tc${li}"><rect x="${x - 2}" y="${y - 22}" width="${full}" height="30">${smil("width", widths)}</rect></clipPath>`);
@@ -73,7 +80,7 @@ index 7527dbb..0b10ede 100644
      let li = chars.findIndex((_, i) => k <= starts[i] + chars[i].length);
      if (li < 0) li = last;
 -    return [x + revealed(li, k), 194 + li * 26];
-+    return [x + revealed(li, k), 160 + li * 26];
++    return [x + revealed(li, k), 114 + li * 26];
    };
    const [fx, fy] = pos(n);
    const moves = [pos(0), ...ks.map(pos)].map(([cx, cy]) => `${(cx - fx).toFixed(1)} ${cy - fy}`);

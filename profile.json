@@ -25,7 +25,16 @@
     "subtitle": "open-source developer",
     "typing": false,
     "avatarShape": "cookie12",
-    "chips": []
+    "chips": [
+      {
+        "icon": "location_on",
+        "label": "Denmark"
+      },
+      {
+        "icon": "brand:osi",
+        "label": "FOSS"
+      }
+    ]
   },
   "about": {
     "title": "About me",
