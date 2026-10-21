@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "login": "ilyamiro",
+  "seed": "#7C3AED",
+  "seedFromAvatar": false,
+  "scheme": "vibrant",
+  "motion": true,
+  "iconFill": true,
+  "order": ["hero", "socials", "buttons"],
+  "hidden": ["about", "stack", "projects", "stats", "streak", "wave"],
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Ilyamiro",
+    "subtitle": "open-source developer",
+    "typing": false,
+    "avatarShape": "cookie12",
+    "chips": [
+      { "icon": "brand:discord", "label": "ilyamiro" }
+    ]
+  },
+  "about": { "title": "About me", "items": [] },
+  "stack": { "title": "Tech stack", "groups": [] },
+  "projects": { "source": "pinned", "repos": [], "overrides": {}, "empty": "", "fork": "Fork" },
+  "stats": { "title": "GitHub activity", "stars": "Stars earned", "contributions": "Contributions this year", "repos": "Public repos", "followers": "Followers", "calendar": "Last 21 days", "weekdays": "SMTWTFS", "languages": "Languages", "showLanguages": false },
+  "streak": { "title": "Streak", "current": "Current streak", "longest": "Longest this year", "days": "days" },
+  "socials": {
+    "items": [
+      { "icon": "brand:github", "url": "https://github.com/ilyamiro" },
+      { "icon": "brand:telegram", "url": "https://t.me/sacrificeit" },
+      { "icon": "brand:youtube", "url": "https://www.youtube.com/@ilyamiro21" },
+      { "icon": "brand:reddit", "url": "https://www.reddit.com/user/ilyamiro1" }
+    ],
+    "variant": "chip",
+    "fill": "tonal",
+    "card": true
+  },
+  "buttons": {
+    "card": true,
+    "items": [
+      { "icon": "mail", "label": "ilyamiro.work@gmail.com", "url": "mailto:ilyamiro.work@gmail.com", "style": "tonal" }
+    ]
+  }
+}

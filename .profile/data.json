@@ -1,0 +1,397 @@
+{
+ "key": "53fdd332",
+ "stars": 8048,
+ "contributions": 1496,
+ "repos": 17,
+ "followers": 830,
+ "languages": [
+  [
+   "QML",
+   8696107
+  ],
+  [
+   "Python",
+   1489216
+  ],
+  [
+   "Rust",
+   808141
+  ],
+  [
+   "JavaScript",
+   338059
+  ],
+  [
+   "C",
+   84057
+  ],
+  [
+   "GLSL",
+   75254
+  ],
+  [
+   "CSS",
+   71971
+  ]
+ ],
+ "days": [
+  [
+   {
+    "c": 32,
+    "day": 4,
+    "today": false
+   },
+   {
+    "c": 5,
+    "day": 5,
+    "today": false
+   },
+   {
+    "c": 1,
+    "day": 6,
+    "today": false
+   },
+   {
+    "c": 4,
+    "day": 7,
+    "today": false
+   },
+   {
+    "c": 8,
+    "day": 8,
+    "today": false
+   },
+   {
+    "c": 45,
+    "day": 9,
+    "today": false
+   },
+   {
+    "c": 28,
+    "day": 10,
+    "today": false
+   }
+  ],
+  [
+   {
+    "c": 9,
+    "day": 11,
+    "today": false
+   },
+   {
+    "c": 22,
+    "day": 12,
+    "today": false
+   },
+   {
+    "c": 58,
+    "day": 13,
+    "today": false
+   },
+   {
+    "c": 9,
+    "day": 14,
+    "today": false
+   },
+   {
+    "c": 60,
+    "day": 15,
+    "today": false
+   },
+   {
+    "c": 60,
+    "day": 16,
+    "today": false
+   },
+   {
+    "c": 78,
+    "day": 17,
+    "today": false
+   }
+  ],
+  [
+   {
+    "c": 33,
+    "day": 18,
+    "today": false
+   },
+   {
+    "c": 39,
+    "day": 19,
+    "today": false
+   },
+   {
+    "c": 32,
+    "day": 20,
+    "today": false
+   },
+   {
+    "c": 10,
+    "day": 21,
+    "today": true
+   },
+   null,
+   null,
+   null
+  ]
+ ],
+ "streak": {
+  "current": 25,
+  "longest": 26
+ },
+ "pins": [
+  {
+   "name": "serpantinum",
+   "url": "https://github.com/ilyamiro/serpantinum",
+   "text": "A shell for wayland compositors",
+   "fork": false,
+   "stars": 7432,
+   "language": "QML",
+   "topics": [
+    "desktop-environment",
+    "hyprland",
+    "niri",
+    "qt",
+    "qt6",
+    "quickshell",
+    "shell",
+    "sway",
+    "wayland",
+    "desktop-shell"
+   ]
+  },
+  {
+   "name": "shell-wallpapers",
+   "url": "https://github.com/ilyamiro/shell-wallpapers",
+   "text": "A collection of my wallpapers for all those in need.",
+   "fork": false,
+   "stars": 218,
+   "language": null,
+   "topics": []
+  },
+  {
+   "name": "stewart",
+   "url": "https://github.com/ilyamiro/stewart",
+   "text": "Personal voice assistant",
+   "fork": false,
+   "stars": 21,
+   "language": "Python",
+   "topics": [
+    "gpt",
+    "stt",
+    "tts",
+    "voice",
+    "voice-assistant",
+    "voice-control",
+    "voice-recognition"
+   ]
+  },
+  {
+   "name": "ilyamiro",
+   "url": "https://github.com/ilyamiro/ilyamiro",
+   "text": "Config files for my GitHub profile.",
+   "fork": false,
+   "stars": 48,
+   "language": "Nix",
+   "topics": [
+    "config",
+    "github-config"
+   ]
+  },
+  {
+   "name": "imperative-dots",
+   "url": "https://github.com/ilyamiro/imperative-dots",
+   "text": "A collection of my dots for those who are not using NixOS with an install script.",
+   "fork": false,
+   "stars": 234,
+   "language": "QML",
+   "topics": []
+  },
+  {
+   "name": "Ski",
+   "url": "https://github.com/ilyamiro/Ski",
+   "text": "A fast and convinient file manager",
+   "fork": false,
+   "stars": 3,
+   "language": "Rust",
+   "topics": []
+  }
+ ],
+ "all": [
+  {
+   "name": "serpantinum",
+   "url": "https://github.com/ilyamiro/serpantinum",
+   "text": "A shell for wayland compositors",
+   "fork": false,
+   "stars": 7432,
+   "language": "QML",
+   "topics": [
+    "desktop-environment",
+    "hyprland",
+    "niri",
+    "qt",
+    "qt6",
+    "quickshell",
+    "shell",
+    "sway",
+    "wayland",
+    "desktop-shell"
+   ]
+  },
+  {
+   "name": "imperative-dots",
+   "url": "https://github.com/ilyamiro/imperative-dots",
+   "text": "A collection of my dots for those who are not using NixOS with an install script.",
+   "fork": false,
+   "stars": 234,
+   "language": "QML",
+   "topics": []
+  },
+  {
+   "name": "shell-wallpapers",
+   "url": "https://github.com/ilyamiro/shell-wallpapers",
+   "text": "A collection of my wallpapers for all those in need.",
+   "fork": false,
+   "stars": 218,
+   "language": null,
+   "topics": []
+  },
+  {
+   "name": "hypr-comp",
+   "url": "https://github.com/ilyamiro/hypr-comp",
+   "text": "A repository containing files for hyprland's #5 ricing competition",
+   "fork": false,
+   "stars": 61,
+   "language": "QML",
+   "topics": []
+  },
+  {
+   "name": "ilyamiro",
+   "url": "https://github.com/ilyamiro/ilyamiro",
+   "text": "Config files for my GitHub profile.",
+   "fork": false,
+   "stars": 48,
+   "language": "Nix",
+   "topics": [
+    "config",
+    "github-config"
+   ]
+  },
+  {
+   "name": "stewart",
+   "url": "https://github.com/ilyamiro/stewart",
+   "text": "Personal voice assistant",
+   "fork": false,
+   "stars": 21,
+   "language": "Python",
+   "topics": [
+    "gpt",
+    "stt",
+    "tts",
+    "voice",
+    "voice-assistant",
+    "voice-control",
+    "voice-recognition"
+   ]
+  },
+  {
+   "name": "waybar-dots",
+   "url": "https://github.com/ilyamiro/waybar-dots",
+   "text": "My configuration files for waybar",
+   "fork": false,
+   "stars": 8,
+   "language": "CSS",
+   "topics": []
+  },
+  {
+   "name": "voicesynth",
+   "url": "https://github.com/ilyamiro/voicesynth",
+   "text": "Pip package for realistic voice synthesis",
+   "fork": false,
+   "stars": 6,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "stewart-test",
+   "url": "https://github.com/ilyamiro/stewart-test",
+   "text": "A testing repository for my voice assistant on a newly configured NixOS machine.",
+   "fork": false,
+   "stars": 5,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "stewart-installer",
+   "url": "https://github.com/ilyamiro/stewart-installer",
+   "text": "Installer for stewart voice assistant",
+   "fork": false,
+   "stars": 4,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "Ski",
+   "url": "https://github.com/ilyamiro/Ski",
+   "text": "A fast and convinient file manager",
+   "fork": false,
+   "stars": 3,
+   "language": "Rust",
+   "topics": []
+  },
+  {
+   "name": "media",
+   "url": "https://github.com/ilyamiro/media",
+   "text": "A collection of media files that are stored on github for my dotfiles",
+   "fork": false,
+   "stars": 3,
+   "language": null,
+   "topics": []
+  },
+  {
+   "name": "done-cli",
+   "url": "https://github.com/ilyamiro/done-cli",
+   "text": "A simple utility to log everyday actions",
+   "fork": false,
+   "stars": 2,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "Fighter",
+   "url": "https://github.com/ilyamiro/Fighter",
+   "text": "A fun tool to estimate someone's ability to fight",
+   "fork": false,
+   "stars": 2,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "ft9366-fingerprint",
+   "url": "https://github.com/ilyamiro/ft9366-fingerprint",
+   "text": "Open-source libfprint driver for the FocalTech FT9366 fingerprint reader (USB 2808:a658), packaged for NixOS",
+   "fork": false,
+   "stars": 1,
+   "language": "C",
+   "topics": []
+  },
+  {
+   "name": "awesome-hyprland",
+   "url": "https://github.com/ilyamiro/awesome-hyprland",
+   "text": "Awesome list for Hyprland [maintainer=@yavko]",
+   "fork": true,
+   "stars": 0,
+   "language": null,
+   "topics": []
+  },
+  {
+   "name": "awesome-wayland",
+   "url": "https://github.com/ilyamiro/awesome-wayland",
+   "text": "A curated list of Wayland resources",
+   "fork": true,
+   "stars": 0,
+   "language": null,
+   "topics": []
+  }
+ ]
+}
