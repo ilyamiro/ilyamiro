@@ -1,21 +1,21 @@
 {
- "key": "1e52b030",
- "stars": 8059,
- "contributions": 1596,
+ "key": "8a89e43d",
+ "stars": 8067,
+ "contributions": 1702,
  "repos": 17,
- "followers": 831,
+ "followers": 833,
  "languages": [
   [
    "QML",
-   6158766
+   6161852
+  ],
+  [
+   "Rust",
+   1330967
   ],
   [
    "Python",
    1296639
-  ],
-  [
-   "Rust",
-   900099
   ],
   [
    "JavaScript",
@@ -131,17 +131,21 @@
     "today": false
    },
    {
-    "c": 15,
+    "c": 98,
     "day": 22,
+    "today": false
+   },
+   {
+    "c": 23,
+    "day": 23,
     "today": true
    },
-   null,
    null
   ]
  ],
  "streak": {
-  "current": 26,
-  "longest": 26
+  "current": 27,
+  "longest": 27
  },
  "pins": [
   {
@@ -149,7 +153,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7443,
+   "stars": 7451,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -169,7 +173,7 @@
    "url": "https://github.com/ilyamiro/shell-wallpapers",
    "text": "A collection of my wallpapers for all those in need.",
    "fork": false,
-   "stars": 218,
+   "stars": 217,
    "language": null,
    "topics": []
   },
@@ -216,7 +220,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 3,
+   "stars": 4,
    "language": "Rust",
    "topics": []
   }
@@ -227,7 +231,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7443,
+   "stars": 7451,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -256,7 +260,7 @@
    "url": "https://github.com/ilyamiro/shell-wallpapers",
    "text": "A collection of my wallpapers for all those in need.",
    "fork": false,
-   "stars": 218,
+   "stars": 217,
    "language": null,
    "topics": []
   },
@@ -326,21 +330,21 @@
    "topics": []
   },
   {
+   "name": "Ski",
+   "url": "https://github.com/ilyamiro/Ski",
+   "text": "A fast and convinient file manager",
+   "fork": false,
+   "stars": 4,
+   "language": "Rust",
+   "topics": []
+  },
+  {
    "name": "stewart-installer",
    "url": "https://github.com/ilyamiro/stewart-installer",
    "text": "Installer for stewart voice assistant",
    "fork": false,
    "stars": 4,
    "language": "Python",
-   "topics": []
-  },
-  {
-   "name": "Ski",
-   "url": "https://github.com/ilyamiro/Ski",
-   "text": "A fast and convinient file manager",
-   "fork": false,
-   "stars": 3,
-   "language": "Rust",
    "topics": []
   },
   {
