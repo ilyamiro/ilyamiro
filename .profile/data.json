@@ -1,21 +1,21 @@
 {
- "key": "67a90a1d",
- "stars": 8081,
- "contributions": 1796,
- "repos": 17,
- "followers": 838,
+ "key": "215a33d7",
+ "stars": 8094,
+ "contributions": 1894,
+ "repos": 16,
+ "followers": 840,
  "languages": [
   [
    "QML",
-   6161852
-  ],
-  [
-   "Rust",
-   1330967
+   6162767
   ],
   [
    "Python",
-   1296639
+   1362266
+  ],
+  [
+   "Rust",
+   1338957
   ],
   [
    "JavaScript",
@@ -35,43 +35,6 @@
   ]
  ],
  "days": [
-  [
-   {
-    "c": 32,
-    "day": 4,
-    "today": false
-   },
-   {
-    "c": 5,
-    "day": 5,
-    "today": false
-   },
-   {
-    "c": 1,
-    "day": 6,
-    "today": false
-   },
-   {
-    "c": 4,
-    "day": 7,
-    "today": false
-   },
-   {
-    "c": 8,
-    "day": 8,
-    "today": false
-   },
-   {
-    "c": 45,
-    "day": 9,
-    "today": false
-   },
-   {
-    "c": 28,
-    "day": 10,
-    "today": false
-   }
-  ],
   [
    {
     "c": 9,
@@ -94,7 +57,7 @@
     "today": false
    },
    {
-    "c": 59,
+    "c": 57,
     "day": 15,
     "today": false
    },
@@ -141,15 +104,28 @@
     "today": false
    },
    {
-    "c": 20,
+    "c": 95,
     "day": 24,
-    "today": true
+    "today": false
    }
+  ],
+  [
+   {
+    "c": 25,
+    "day": 25,
+    "today": true
+   },
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
   ]
  ],
  "streak": {
-  "current": 28,
-  "longest": 28
+  "current": 29,
+  "longest": 29
  },
  "pins": [
   {
@@ -157,7 +133,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7463,
+   "stars": 7476,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -171,15 +147,6 @@
     "wayland",
     "desktop-shell"
    ]
-  },
-  {
-   "name": "shell-wallpapers",
-   "url": "https://github.com/ilyamiro/shell-wallpapers",
-   "text": "A collection of my wallpapers for all those in need.",
-   "fork": false,
-   "stars": 217,
-   "language": null,
-   "topics": []
   },
   {
    "name": "stewart",
@@ -224,8 +191,17 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 5,
+   "stars": 6,
    "language": "Rust",
+   "topics": []
+  },
+  {
+   "name": "ft9366-fingerprint",
+   "url": "https://github.com/ilyamiro/ft9366-fingerprint",
+   "text": "Open-source libfprint driver for the FocalTech FT9366 fingerprint reader (USB 2808:a658), packaged for NixOS",
+   "fork": false,
+   "stars": 1,
+   "language": "C",
    "topics": []
   }
  ],
@@ -235,7 +211,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7463,
+   "stars": 7476,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -264,7 +240,7 @@
    "url": "https://github.com/ilyamiro/shell-wallpapers",
    "text": "A collection of my wallpapers for all those in need.",
    "fork": false,
-   "stars": 217,
+   "stars": 216,
    "language": null,
    "topics": []
   },
@@ -316,21 +292,21 @@
    "topics": []
   },
   {
+   "name": "Ski",
+   "url": "https://github.com/ilyamiro/Ski",
+   "text": "A fast and convinient file manager",
+   "fork": false,
+   "stars": 6,
+   "language": "Rust",
+   "topics": []
+  },
+  {
    "name": "voicesynth",
    "url": "https://github.com/ilyamiro/voicesynth",
    "text": "Pip package for realistic voice synthesis",
    "fork": false,
    "stars": 6,
    "language": "Python",
-   "topics": []
-  },
-  {
-   "name": "Ski",
-   "url": "https://github.com/ilyamiro/Ski",
-   "text": "A fast and convinient file manager",
-   "fork": false,
-   "stars": 5,
-   "language": "Rust",
    "topics": []
   },
   {
@@ -391,15 +367,6 @@
    "name": "awesome-hyprland",
    "url": "https://github.com/ilyamiro/awesome-hyprland",
    "text": "Awesome list for Hyprland [maintainer=@yavko]",
-   "fork": true,
-   "stars": 0,
-   "language": null,
-   "topics": []
-  },
-  {
-   "name": "awesome-wayland",
-   "url": "https://github.com/ilyamiro/awesome-wayland",
-   "text": "A curated list of Wayland resources",
    "fork": true,
    "stars": 0,
    "language": null,
