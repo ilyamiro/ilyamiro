@@ -1,21 +1,21 @@
 {
- "key": "215a33d7",
- "stars": 8094,
- "contributions": 1894,
+ "key": "ff309d7d",
+ "stars": 8108,
+ "contributions": 1926,
  "repos": 16,
- "followers": 840,
+ "followers": 843,
  "languages": [
   [
    "QML",
-   6162767
+   6143514
+  ],
+  [
+   "Rust",
+   1390797
   ],
   [
    "Python",
    1362266
-  ],
-  [
-   "Rust",
-   1338957
   ],
   [
    "JavaScript",
@@ -111,11 +111,15 @@
   ],
   [
    {
-    "c": 25,
+    "c": 43,
     "day": 25,
+    "today": false
+   },
+   {
+    "c": 14,
+    "day": 26,
     "today": true
    },
-   null,
    null,
    null,
    null,
@@ -124,8 +128,8 @@
   ]
  ],
  "streak": {
-  "current": 29,
-  "longest": 29
+  "current": 30,
+  "longest": 30
  },
  "pins": [
   {
@@ -133,7 +137,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7476,
+   "stars": 7490,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -191,7 +195,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 6,
+   "stars": 5,
    "language": "Rust",
    "topics": []
   },
@@ -211,7 +215,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7476,
+   "stars": 7490,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -240,7 +244,7 @@
    "url": "https://github.com/ilyamiro/shell-wallpapers",
    "text": "A collection of my wallpapers for all those in need.",
    "fork": false,
-   "stars": 216,
+   "stars": 217,
    "language": null,
    "topics": []
   },
@@ -292,21 +296,21 @@
    "topics": []
   },
   {
-   "name": "Ski",
-   "url": "https://github.com/ilyamiro/Ski",
-   "text": "A fast and convinient file manager",
-   "fork": false,
-   "stars": 6,
-   "language": "Rust",
-   "topics": []
-  },
-  {
    "name": "voicesynth",
    "url": "https://github.com/ilyamiro/voicesynth",
    "text": "Pip package for realistic voice synthesis",
    "fork": false,
    "stars": 6,
    "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "Ski",
+   "url": "https://github.com/ilyamiro/Ski",
+   "text": "A fast and convinient file manager",
+   "fork": false,
+   "stars": 5,
+   "language": "Rust",
    "topics": []
   },
   {
