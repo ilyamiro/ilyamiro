@@ -1,21 +1,21 @@
 {
- "key": "a7411892",
- "stars": 8120,
- "contributions": 2000,
- "repos": 16,
- "followers": 847,
+ "key": "5ade5f05",
+ "stars": 8139,
+ "contributions": 2110,
+ "repos": 18,
+ "followers": 850,
  "languages": [
   [
    "QML",
-   6143514
+   6144541
   ],
   [
    "Rust",
-   1431461
+   3422255
   ],
   [
    "Python",
-   1362266
+   1424268
   ],
   [
    "JavaScript",
@@ -23,7 +23,7 @@
   ],
   [
    "C",
-   84486
+   95285
   ],
   [
    "GLSL",
@@ -121,19 +121,23 @@
     "today": false
    },
    {
-    "c": 40,
+    "c": 106,
     "day": 27,
+    "today": false
+   },
+   {
+    "c": 44,
+    "day": 28,
     "today": true
    },
-   null,
    null,
    null,
    null
   ]
  ],
  "streak": {
-  "current": 31,
-  "longest": 31
+  "current": 32,
+  "longest": 32
  },
  "pins": [
   {
@@ -141,7 +145,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7503,
+   "stars": 7518,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -219,7 +223,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7503,
+   "stars": 7518,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -327,6 +331,15 @@
    "topics": []
   },
   {
+   "name": "chesser",
+   "url": "https://github.com/ilyamiro/chesser",
+   "text": "Convert any image into chess boards",
+   "fork": false,
+   "stars": 4,
+   "language": "Python",
+   "topics": []
+  },
+  {
    "name": "stewart-installer",
    "url": "https://github.com/ilyamiro/stewart-installer",
    "text": "Installer for stewart voice assistant",
@@ -369,6 +382,15 @@
    "fork": false,
    "stars": 1,
    "language": "C",
+   "topics": []
+  },
+  {
+   "name": "Acanthus",
+   "url": "https://github.com/ilyamiro/Acanthus",
+   "text": "An engine for your desktop",
+   "fork": false,
+   "stars": 0,
+   "language": "Rust",
    "topics": []
   },
   {
