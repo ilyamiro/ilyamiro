@@ -1,21 +1,21 @@
 {
- "key": "5ade5f05",
- "stars": 8139,
- "contributions": 2110,
+ "key": "47885561",
+ "stars": 8153,
+ "contributions": 2182,
  "repos": 18,
- "followers": 850,
+ "followers": 854,
  "languages": [
   [
    "QML",
-   6144541
+   6155418
   ],
   [
    "Rust",
-   3422255
+   3816860
   ],
   [
    "Python",
-   1424268
+   1425256
   ],
   [
    "JavaScript",
@@ -126,18 +126,22 @@
     "today": false
    },
    {
-    "c": 44,
+    "c": 102,
     "day": 28,
+    "today": false
+   },
+   {
+    "c": 14,
+    "day": 29,
     "today": true
    },
-   null,
    null,
    null
   ]
  ],
  "streak": {
-  "current": 32,
-  "longest": 32
+  "current": 33,
+  "longest": 33
  },
  "pins": [
   {
@@ -145,7 +149,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7518,
+   "stars": 7530,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -223,7 +227,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7518,
+   "stars": 7530,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -313,6 +317,15 @@
    "topics": []
   },
   {
+   "name": "chesser",
+   "url": "https://github.com/ilyamiro/chesser",
+   "text": "Convert any image into chess boards",
+   "fork": false,
+   "stars": 5,
+   "language": "Python",
+   "topics": []
+  },
+  {
    "name": "Ski",
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
@@ -327,15 +340,6 @@
    "text": "A testing repository for my voice assistant on a newly configured NixOS machine.",
    "fork": false,
    "stars": 5,
-   "language": "Python",
-   "topics": []
-  },
-  {
-   "name": "chesser",
-   "url": "https://github.com/ilyamiro/chesser",
-   "text": "Convert any image into chess boards",
-   "fork": false,
-   "stars": 4,
    "language": "Python",
    "topics": []
   },
@@ -376,21 +380,21 @@
    "topics": []
   },
   {
+   "name": "Acanthus",
+   "url": "https://github.com/ilyamiro/Acanthus",
+   "text": "An engine for your desktop",
+   "fork": false,
+   "stars": 1,
+   "language": "Rust",
+   "topics": []
+  },
+  {
    "name": "ft9366-fingerprint",
    "url": "https://github.com/ilyamiro/ft9366-fingerprint",
    "text": "Open-source libfprint driver for the FocalTech FT9366 fingerprint reader (USB 2808:a658), packaged for NixOS",
    "fork": false,
    "stars": 1,
    "language": "C",
-   "topics": []
-  },
-  {
-   "name": "Acanthus",
-   "url": "https://github.com/ilyamiro/Acanthus",
-   "text": "An engine for your desktop",
-   "fork": false,
-   "stars": 0,
-   "language": "Rust",
    "topics": []
   },
   {
