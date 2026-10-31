@@ -1,17 +1,17 @@
 {
- "key": "875840ea",
- "stars": 8164,
- "contributions": 2218,
+ "key": "94d8d57b",
+ "stars": 8181,
+ "contributions": 2268,
  "repos": 18,
- "followers": 856,
+ "followers": 862,
  "languages": [
   [
    "QML",
-   6155418
+   6154232
   ],
   [
    "Rust",
-   3941893
+   4290534
   ],
   [
    "Python",
@@ -27,7 +27,7 @@
   ],
   [
    "GLSL",
-   75254
+   75658
   ],
   [
    "CSS",
@@ -131,21 +131,25 @@
     "today": false
    },
    {
-    "c": 47,
+    "c": 48,
     "day": 29,
     "today": false
    },
    {
-    "c": 3,
+    "c": 45,
     "day": 30,
-    "today": true
+    "today": false
    },
-   null
+   {
+    "c": 7,
+    "day": 31,
+    "today": true
+   }
   ]
  ],
  "streak": {
-  "current": 34,
-  "longest": 34
+  "current": 35,
+  "longest": 35
  },
  "pins": [
   {
@@ -153,7 +157,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7539,
+   "stars": 7547,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -211,7 +215,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 7,
+   "stars": 16,
    "language": "Rust",
    "topics": []
   },
@@ -231,7 +235,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7539,
+   "stars": 7547,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -303,21 +307,21 @@
    ]
   },
   {
+   "name": "Ski",
+   "url": "https://github.com/ilyamiro/Ski",
+   "text": "A fast and convinient file manager",
+   "fork": false,
+   "stars": 16,
+   "language": "Rust",
+   "topics": []
+  },
+  {
    "name": "waybar-dots",
    "url": "https://github.com/ilyamiro/waybar-dots",
    "text": "My configuration files for waybar",
    "fork": false,
    "stars": 9,
    "language": "CSS",
-   "topics": []
-  },
-  {
-   "name": "Ski",
-   "url": "https://github.com/ilyamiro/Ski",
-   "text": "A fast and convinient file manager",
-   "fork": false,
-   "stars": 7,
-   "language": "Rust",
    "topics": []
   },
   {
