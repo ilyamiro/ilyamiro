@@ -1,17 +1,17 @@
 {
- "key": "94d8d57b",
- "stars": 8181,
- "contributions": 2268,
- "repos": 18,
- "followers": 862,
+ "key": "cf717f57",
+ "stars": 8200,
+ "contributions": 2327,
+ "repos": 20,
+ "followers": 865,
  "languages": [
   [
    "QML",
-   6154232
+   6158866
   ],
   [
    "Rust",
-   4290534
+   4486955
   ],
   [
    "Python",
@@ -22,56 +22,19 @@
    340125
   ],
   [
+   "C++",
+   96486
+  ],
+  [
    "C",
    95285
   ],
   [
    "GLSL",
    75658
-  ],
-  [
-   "CSS",
-   71971
   ]
  ],
  "days": [
-  [
-   {
-    "c": 9,
-    "day": 11,
-    "today": false
-   },
-   {
-    "c": 22,
-    "day": 12,
-    "today": false
-   },
-   {
-    "c": 58,
-    "day": 13,
-    "today": false
-   },
-   {
-    "c": 10,
-    "day": 14,
-    "today": false
-   },
-   {
-    "c": 57,
-    "day": 15,
-    "today": false
-   },
-   {
-    "c": 60,
-    "day": 16,
-    "today": false
-   },
-   {
-    "c": 78,
-    "day": 17,
-    "today": false
-   }
-  ],
   [
    {
     "c": 33,
@@ -141,15 +104,28 @@
     "today": false
    },
    {
-    "c": 7,
+    "c": 30,
     "day": 31,
-    "today": true
+    "today": false
    }
+  ],
+  [
+   {
+    "c": 36,
+    "day": 1,
+    "today": true
+   },
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
   ]
  ],
  "streak": {
-  "current": 35,
-  "longest": 35
+  "current": 36,
+  "longest": 36
  },
  "pins": [
   {
@@ -157,7 +133,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7547,
+   "stars": 7558,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -177,7 +153,7 @@
    "url": "https://github.com/ilyamiro/stewart",
    "text": "Personal voice assistant",
    "fork": false,
-   "stars": 21,
+   "stars": 22,
    "language": "Python",
    "topics": [
     "gpt",
@@ -215,7 +191,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 16,
+   "stars": 20,
    "language": "Rust",
    "topics": []
   },
@@ -235,7 +211,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7547,
+   "stars": 7558,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -294,7 +270,7 @@
    "url": "https://github.com/ilyamiro/stewart",
    "text": "Personal voice assistant",
    "fork": false,
-   "stars": 21,
+   "stars": 22,
    "language": "Python",
    "topics": [
     "gpt",
@@ -311,7 +287,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 16,
+   "stars": 20,
    "language": "Rust",
    "topics": []
   },
@@ -370,6 +346,24 @@
    "topics": []
   },
   {
+   "name": "serpantinum-audio",
+   "url": "https://github.com/ilyamiro/serpantinum-audio",
+   "text": "A c++ audio daemon for serpantinum",
+   "fork": false,
+   "stars": 2,
+   "language": "C++",
+   "topics": []
+  },
+  {
+   "name": "Acanthus",
+   "url": "https://github.com/ilyamiro/Acanthus",
+   "text": "An engine for your desktop",
+   "fork": false,
+   "stars": 2,
+   "language": "Rust",
+   "topics": []
+  },
+  {
    "name": "done-cli",
    "url": "https://github.com/ilyamiro/done-cli",
    "text": "A simple utility to log everyday actions",
@@ -388,12 +382,12 @@
    "topics": []
   },
   {
-   "name": "Acanthus",
-   "url": "https://github.com/ilyamiro/Acanthus",
-   "text": "An engine for your desktop",
-   "fork": false,
+   "name": "nixpkgs",
+   "url": "https://github.com/ilyamiro/nixpkgs",
+   "text": "Nix Packages collection & NixOS",
+   "fork": true,
    "stars": 1,
-   "language": "Rust",
+   "language": "Nix",
    "topics": []
   },
   {
