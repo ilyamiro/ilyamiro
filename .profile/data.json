@@ -1,17 +1,17 @@
 {
- "key": "cf717f57",
- "stars": 8200,
- "contributions": 2327,
+ "key": "83553f74",
+ "stars": 8222,
+ "contributions": 2336,
  "repos": 20,
- "followers": 865,
+ "followers": 867,
  "languages": [
   [
    "QML",
-   6158866
+   6159590
   ],
   [
    "Rust",
-   4486955
+   4323553
   ],
   [
    "Python",
@@ -111,11 +111,15 @@
   ],
   [
    {
-    "c": 36,
+    "c": 37,
     "day": 1,
+    "today": false
+   },
+   {
+    "c": 8,
+    "day": 2,
     "today": true
    },
-   null,
    null,
    null,
    null,
@@ -124,8 +128,8 @@
   ]
  ],
  "streak": {
-  "current": 36,
-  "longest": 36
+  "current": 37,
+  "longest": 37
  },
  "pins": [
   {
@@ -133,7 +137,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7558,
+   "stars": 7575,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -170,7 +174,7 @@
    "url": "https://github.com/ilyamiro/ilyamiro",
    "text": "Config files for my GitHub profile.",
    "fork": false,
-   "stars": 48,
+   "stars": 49,
    "language": "Nix",
    "topics": [
     "config",
@@ -191,7 +195,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 20,
+   "stars": 23,
    "language": "Rust",
    "topics": []
   },
@@ -211,7 +215,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7558,
+   "stars": 7575,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -258,12 +262,21 @@
    "url": "https://github.com/ilyamiro/ilyamiro",
    "text": "Config files for my GitHub profile.",
    "fork": false,
-   "stars": 48,
+   "stars": 49,
    "language": "Nix",
    "topics": [
     "config",
     "github-config"
    ]
+  },
+  {
+   "name": "Ski",
+   "url": "https://github.com/ilyamiro/Ski",
+   "text": "A fast and convinient file manager",
+   "fork": false,
+   "stars": 23,
+   "language": "Rust",
+   "topics": []
   },
   {
    "name": "stewart",
@@ -281,15 +294,6 @@
     "voice-control",
     "voice-recognition"
    ]
-  },
-  {
-   "name": "Ski",
-   "url": "https://github.com/ilyamiro/Ski",
-   "text": "A fast and convinient file manager",
-   "fork": false,
-   "stars": 20,
-   "language": "Rust",
-   "topics": []
   },
   {
    "name": "waybar-dots",
@@ -337,21 +341,21 @@
    "topics": []
   },
   {
+   "name": "serpantinum-audio",
+   "url": "https://github.com/ilyamiro/serpantinum-audio",
+   "text": "A c++ audio daemon for serpantinum",
+   "fork": false,
+   "stars": 3,
+   "language": "C++",
+   "topics": []
+  },
+  {
    "name": "media",
    "url": "https://github.com/ilyamiro/media",
    "text": "A collection of media files that are stored on github for my dotfiles",
    "fork": false,
    "stars": 3,
    "language": null,
-   "topics": []
-  },
-  {
-   "name": "serpantinum-audio",
-   "url": "https://github.com/ilyamiro/serpantinum-audio",
-   "text": "A c++ audio daemon for serpantinum",
-   "fork": false,
-   "stars": 2,
-   "language": "C++",
    "topics": []
   },
   {
