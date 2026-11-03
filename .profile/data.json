@@ -1,17 +1,17 @@
 {
- "key": "83553f74",
- "stars": 8222,
- "contributions": 2336,
- "repos": 20,
- "followers": 867,
+ "key": "b347c545",
+ "stars": 8237,
+ "contributions": 2407,
+ "repos": 21,
+ "followers": 871,
  "languages": [
   [
    "QML",
-   6159590
+   6185941
   ],
   [
    "Rust",
-   4323553
+   4438613
   ],
   [
    "Python",
@@ -23,7 +23,7 @@
   ],
   [
    "C++",
-   96486
+   99175
   ],
   [
    "C",
@@ -31,7 +31,7 @@
   ],
   [
    "GLSL",
-   75658
+   76585
   ]
  ],
  "days": [
@@ -116,11 +116,15 @@
     "today": false
    },
    {
-    "c": 8,
+    "c": 53,
     "day": 2,
+    "today": false
+   },
+   {
+    "c": 26,
+    "day": 3,
     "today": true
    },
-   null,
    null,
    null,
    null,
@@ -128,8 +132,8 @@
   ]
  ],
  "streak": {
-  "current": 37,
-  "longest": 37
+  "current": 38,
+  "longest": 38
  },
  "pins": [
   {
@@ -137,7 +141,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7575,
+   "stars": 7582,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -195,7 +199,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 23,
+   "stars": 32,
    "language": "Rust",
    "topics": []
   },
@@ -215,7 +219,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7575,
+   "stars": 7582,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -244,7 +248,7 @@
    "url": "https://github.com/ilyamiro/shell-wallpapers",
    "text": "A collection of my wallpapers for all those in need.",
    "fork": false,
-   "stars": 217,
+   "stars": 216,
    "language": null,
    "topics": []
   },
@@ -274,7 +278,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 23,
+   "stars": 32,
    "language": "Rust",
    "topics": []
   },
@@ -401,6 +405,15 @@
    "fork": false,
    "stars": 1,
    "language": "C",
+   "topics": []
+  },
+  {
+   "name": "WorldOfShells",
+   "url": "https://github.com/ilyamiro/WorldOfShells",
+   "text": "Showcase and try different Hyprland shells - Quickshell app. WARNING: Highly experimental. I am not a developer, just someone in their room with a PC and internet access. Activating shells may modify your system config. Use at your own risk.",
+   "fork": true,
+   "stars": 0,
+   "language": "QML",
    "topics": []
   },
   {
