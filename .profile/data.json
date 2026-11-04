@@ -1,21 +1,21 @@
 {
- "key": "b347c545",
- "stars": 8237,
- "contributions": 2407,
+ "key": "7a37e990",
+ "stars": 8265,
+ "contributions": 2436,
  "repos": 21,
- "followers": 871,
+ "followers": 873,
  "languages": [
   [
    "QML",
-   6185941
+   6204436
   ],
   [
    "Rust",
-   4438613
+   4520702
   ],
   [
    "Python",
-   1425256
+   1427226
   ],
   [
    "JavaScript",
@@ -121,19 +121,23 @@
     "today": false
    },
    {
-    "c": 26,
+    "c": 48,
     "day": 3,
+    "today": false
+   },
+   {
+    "c": 7,
+    "day": 4,
     "today": true
    },
-   null,
    null,
    null,
    null
   ]
  ],
  "streak": {
-  "current": 38,
-  "longest": 38
+  "current": 39,
+  "longest": 39
  },
  "pins": [
   {
@@ -141,7 +145,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7582,
+   "stars": 7604,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -199,7 +203,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 32,
+   "stars": 37,
    "language": "Rust",
    "topics": []
   },
@@ -219,7 +223,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7582,
+   "stars": 7604,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -257,7 +261,7 @@
    "url": "https://github.com/ilyamiro/hypr-comp",
    "text": "A repository containing files for hyprland's #5 ricing competition",
    "fork": false,
-   "stars": 61,
+   "stars": 62,
    "language": "QML",
    "topics": []
   },
@@ -278,7 +282,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 32,
+   "stars": 37,
    "language": "Rust",
    "topics": []
   },
@@ -309,15 +313,6 @@
    "topics": []
   },
   {
-   "name": "voicesynth",
-   "url": "https://github.com/ilyamiro/voicesynth",
-   "text": "Pip package for realistic voice synthesis",
-   "fork": false,
-   "stars": 6,
-   "language": "Python",
-   "topics": []
-  },
-  {
    "name": "chesser",
    "url": "https://github.com/ilyamiro/chesser",
    "text": "Convert any image into chess boards",
@@ -336,11 +331,11 @@
    "topics": []
   },
   {
-   "name": "stewart-installer",
-   "url": "https://github.com/ilyamiro/stewart-installer",
-   "text": "Installer for stewart voice assistant",
+   "name": "voicesynth",
+   "url": "https://github.com/ilyamiro/voicesynth",
+   "text": "Pip package for realistic voice synthesis",
    "fork": false,
-   "stars": 4,
+   "stars": 5,
    "language": "Python",
    "topics": []
   },
@@ -349,8 +344,17 @@
    "url": "https://github.com/ilyamiro/serpantinum-audio",
    "text": "A c++ audio daemon for serpantinum",
    "fork": false,
-   "stars": 3,
+   "stars": 4,
    "language": "C++",
+   "topics": []
+  },
+  {
+   "name": "stewart-installer",
+   "url": "https://github.com/ilyamiro/stewart-installer",
+   "text": "Installer for stewart voice assistant",
+   "fork": false,
+   "stars": 4,
+   "language": "Python",
    "topics": []
   },
   {
@@ -408,12 +412,12 @@
    "topics": []
   },
   {
-   "name": "WorldOfShells",
-   "url": "https://github.com/ilyamiro/WorldOfShells",
-   "text": "Showcase and try different Hyprland shells - Quickshell app. WARNING: Highly experimental. I am not a developer, just someone in their room with a PC and internet access. Activating shells may modify your system config. Use at your own risk.",
-   "fork": true,
+   "name": "serpantinum-gamma",
+   "url": "https://github.com/ilyamiro/serpantinum-gamma",
+   "text": "A gamma display control application for serpantinum",
+   "fork": false,
    "stars": 0,
-   "language": "QML",
+   "language": "Rust",
    "topics": []
   },
   {
