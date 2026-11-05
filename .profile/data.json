@@ -1,21 +1,21 @@
 {
- "key": "7a37e990",
- "stars": 8265,
- "contributions": 2436,
+ "key": "fdfd9392",
+ "stars": 8283,
+ "contributions": 2495,
  "repos": 21,
- "followers": 873,
+ "followers": 875,
  "languages": [
   [
    "QML",
-   6204436
+   6292005
   ],
   [
    "Rust",
-   4520702
+   4592028
   ],
   [
    "Python",
-   1427226
+   1537320
   ],
   [
    "JavaScript",
@@ -23,15 +23,15 @@
   ],
   [
    "C++",
-   99175
+   102186
   ],
   [
    "C",
    95285
   ],
   [
-   "GLSL",
-   76585
+   "CSS",
+   83850
   ]
  ],
  "days": [
@@ -121,23 +121,27 @@
     "today": false
    },
    {
-    "c": 48,
+    "c": 49,
     "day": 3,
     "today": false
    },
    {
-    "c": 7,
+    "c": 46,
     "day": 4,
+    "today": false
+   },
+   {
+    "c": 19,
+    "day": 5,
     "today": true
    },
-   null,
    null,
    null
   ]
  ],
  "streak": {
-  "current": 39,
-  "longest": 39
+  "current": 40,
+  "longest": 40
  },
  "pins": [
   {
@@ -145,7 +149,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7604,
+   "stars": 7613,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -203,7 +207,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 37,
+   "stars": 43,
    "language": "Rust",
    "topics": []
   },
@@ -223,7 +227,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7604,
+   "stars": 7613,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -252,7 +256,7 @@
    "url": "https://github.com/ilyamiro/shell-wallpapers",
    "text": "A collection of my wallpapers for all those in need.",
    "fork": false,
-   "stars": 216,
+   "stars": 217,
    "language": null,
    "topics": []
   },
@@ -282,7 +286,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 37,
+   "stars": 43,
    "language": "Rust",
    "topics": []
   },
@@ -367,6 +371,15 @@
    "topics": []
   },
   {
+   "name": "serpantinum-gamma",
+   "url": "https://github.com/ilyamiro/serpantinum-gamma",
+   "text": "A gamma display control application for serpantinum",
+   "fork": false,
+   "stars": 2,
+   "language": "Rust",
+   "topics": []
+  },
+  {
    "name": "Acanthus",
    "url": "https://github.com/ilyamiro/Acanthus",
    "text": "An engine for your desktop",
@@ -409,15 +422,6 @@
    "fork": false,
    "stars": 1,
    "language": "C",
-   "topics": []
-  },
-  {
-   "name": "serpantinum-gamma",
-   "url": "https://github.com/ilyamiro/serpantinum-gamma",
-   "text": "A gamma display control application for serpantinum",
-   "fork": false,
-   "stars": 0,
-   "language": "Rust",
    "topics": []
   },
   {
