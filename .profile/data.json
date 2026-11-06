@@ -1,17 +1,17 @@
 {
- "key": "fdfd9392",
- "stars": 8283,
- "contributions": 2495,
+ "key": "e24fb9ad",
+ "stars": 8298,
+ "contributions": 2512,
  "repos": 21,
- "followers": 875,
+ "followers": 878,
  "languages": [
   [
    "QML",
-   6292005
+   6338457
   ],
   [
    "Rust",
-   4592028
+   4603342
   ],
   [
    "Python",
@@ -131,17 +131,21 @@
     "today": false
    },
    {
-    "c": 19,
+    "c": 34,
     "day": 5,
+    "today": false
+   },
+   {
+    "c": 2,
+    "day": 6,
     "today": true
    },
-   null,
    null
   ]
  ],
  "streak": {
-  "current": 40,
-  "longest": 40
+  "current": 41,
+  "longest": 41
  },
  "pins": [
   {
@@ -149,7 +153,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7613,
+   "stars": 7624,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -207,7 +211,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 43,
+   "stars": 46,
    "language": "Rust",
    "topics": []
   },
@@ -227,7 +231,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7613,
+   "stars": 7624,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -286,7 +290,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 43,
+   "stars": 46,
    "language": "Rust",
    "topics": []
   },
@@ -362,21 +366,21 @@
    "topics": []
   },
   {
+   "name": "serpantinum-gamma",
+   "url": "https://github.com/ilyamiro/serpantinum-gamma",
+   "text": "A gamma display control application for serpantinum",
+   "fork": false,
+   "stars": 3,
+   "language": "Rust",
+   "topics": []
+  },
+  {
    "name": "media",
    "url": "https://github.com/ilyamiro/media",
    "text": "A collection of media files that are stored on github for my dotfiles",
    "fork": false,
    "stars": 3,
    "language": null,
-   "topics": []
-  },
-  {
-   "name": "serpantinum-gamma",
-   "url": "https://github.com/ilyamiro/serpantinum-gamma",
-   "text": "A gamma display control application for serpantinum",
-   "fork": false,
-   "stars": 2,
-   "language": "Rust",
    "topics": []
   },
   {
