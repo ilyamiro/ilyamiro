@@ -1,21 +1,21 @@
 {
- "key": "e24fb9ad",
- "stars": 8298,
- "contributions": 2512,
- "repos": 21,
- "followers": 878,
+ "key": "5618c35",
+ "stars": 8308,
+ "contributions": 2553,
+ "repos": 22,
+ "followers": 881,
  "languages": [
   [
    "QML",
-   6338457
+   6309057
   ],
   [
    "Rust",
-   4603342
+   4853550
   ],
   [
    "Python",
-   1537320
+   1471986
   ],
   [
    "JavaScript",
@@ -136,16 +136,20 @@
     "today": false
    },
    {
-    "c": 2,
+    "c": 29,
     "day": 6,
-    "today": true
+    "today": false
    },
-   null
+   {
+    "c": 14,
+    "day": 7,
+    "today": true
+   }
   ]
  ],
  "streak": {
-  "current": 41,
-  "longest": 41
+  "current": 42,
+  "longest": 42
  },
  "pins": [
   {
@@ -153,7 +157,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7624,
+   "stars": 7630,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -211,7 +215,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 46,
+   "stars": 51,
    "language": "Rust",
    "topics": []
   },
@@ -231,7 +235,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7624,
+   "stars": 7630,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -260,7 +264,7 @@
    "url": "https://github.com/ilyamiro/shell-wallpapers",
    "text": "A collection of my wallpapers for all those in need.",
    "fork": false,
-   "stars": 217,
+   "stars": 216,
    "language": null,
    "topics": []
   },
@@ -274,6 +278,15 @@
    "topics": []
   },
   {
+   "name": "Ski",
+   "url": "https://github.com/ilyamiro/Ski",
+   "text": "A fast and convinient file manager",
+   "fork": false,
+   "stars": 51,
+   "language": "Rust",
+   "topics": []
+  },
+  {
    "name": "ilyamiro",
    "url": "https://github.com/ilyamiro/ilyamiro",
    "text": "Config files for my GitHub profile.",
@@ -284,15 +297,6 @@
     "config",
     "github-config"
    ]
-  },
-  {
-   "name": "Ski",
-   "url": "https://github.com/ilyamiro/Ski",
-   "text": "A fast and convinient file manager",
-   "fork": false,
-   "stars": 46,
-   "language": "Rust",
-   "topics": []
   },
   {
    "name": "stewart",
@@ -426,6 +430,15 @@
    "fork": false,
    "stars": 1,
    "language": "C",
+   "topics": []
+  },
+  {
+   "name": "serpantinum-core",
+   "url": "https://github.com/ilyamiro/serpantinum-core",
+   "text": "A core of services for Serpantinum shell in Rust.",
+   "fork": false,
+   "stars": 0,
+   "language": "Rust",
    "topics": []
   },
   {
