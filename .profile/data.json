@@ -1,21 +1,21 @@
 {
- "key": "5618c35",
- "stars": 8308,
- "contributions": 2553,
+ "key": "b987e0a0",
+ "stars": 8325,
+ "contributions": 2599,
  "repos": 22,
- "followers": 881,
+ "followers": 885,
  "languages": [
   [
    "QML",
-   6309057
+   6315839
   ],
   [
    "Rust",
-   4853550
+   4918675
   ],
   [
    "Python",
-   1471986
+   1461965
   ],
   [
    "JavaScript",
@@ -23,7 +23,7 @@
   ],
   [
    "C++",
-   102186
+   139578
   ],
   [
    "C",
@@ -35,43 +35,6 @@
   ]
  ],
  "days": [
-  [
-   {
-    "c": 33,
-    "day": 18,
-    "today": false
-   },
-   {
-    "c": 39,
-    "day": 19,
-    "today": false
-   },
-   {
-    "c": 32,
-    "day": 20,
-    "today": false
-   },
-   {
-    "c": 95,
-    "day": 21,
-    "today": false
-   },
-   {
-    "c": 98,
-    "day": 22,
-    "today": false
-   },
-   {
-    "c": 97,
-    "day": 23,
-    "today": false
-   },
-   {
-    "c": 95,
-    "day": 24,
-    "today": false
-   }
-  ],
   [
    {
     "c": 43,
@@ -141,15 +104,28 @@
     "today": false
    },
    {
-    "c": 14,
+    "c": 51,
     "day": 7,
-    "today": true
+    "today": false
    }
+  ],
+  [
+   {
+    "c": 9,
+    "day": 8,
+    "today": true
+   },
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
   ]
  ],
  "streak": {
-  "current": 42,
-  "longest": 42
+  "current": 43,
+  "longest": 43
  },
  "pins": [
   {
@@ -157,7 +133,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7630,
+   "stars": 7640,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -170,6 +146,27 @@
     "sway",
     "wayland",
     "desktop-shell"
+   ]
+  },
+  {
+   "name": "Ski",
+   "url": "https://github.com/ilyamiro/Ski",
+   "text": "A fast and convinient file manager",
+   "fork": false,
+   "stars": 56,
+   "language": "Rust",
+   "topics": []
+  },
+  {
+   "name": "ilyamiro",
+   "url": "https://github.com/ilyamiro/ilyamiro",
+   "text": "Config files for my GitHub profile.",
+   "fork": false,
+   "stars": 49,
+   "language": "Nix",
+   "topics": [
+    "config",
+    "github-config"
    ]
   },
   {
@@ -190,42 +187,21 @@
    ]
   },
   {
-   "name": "ilyamiro",
-   "url": "https://github.com/ilyamiro/ilyamiro",
-   "text": "Config files for my GitHub profile.",
+   "name": "voicesynth",
+   "url": "https://github.com/ilyamiro/voicesynth",
+   "text": "Pip package for realistic voice synthesis",
    "fork": false,
-   "stars": 49,
-   "language": "Nix",
-   "topics": [
-    "config",
-    "github-config"
-   ]
-  },
-  {
-   "name": "imperative-dots",
-   "url": "https://github.com/ilyamiro/imperative-dots",
-   "text": "A collection of my dots for those who are not using NixOS with an install script.",
-   "fork": false,
-   "stars": 233,
-   "language": "QML",
+   "stars": 5,
+   "language": "Python",
    "topics": []
   },
   {
-   "name": "Ski",
-   "url": "https://github.com/ilyamiro/Ski",
-   "text": "A fast and convinient file manager",
+   "name": "chesser",
+   "url": "https://github.com/ilyamiro/chesser",
+   "text": "Convert any image into chess boards",
    "fork": false,
-   "stars": 51,
-   "language": "Rust",
-   "topics": []
-  },
-  {
-   "name": "ft9366-fingerprint",
-   "url": "https://github.com/ilyamiro/ft9366-fingerprint",
-   "text": "Open-source libfprint driver for the FocalTech FT9366 fingerprint reader (USB 2808:a658), packaged for NixOS",
-   "fork": false,
-   "stars": 1,
-   "language": "C",
+   "stars": 5,
+   "language": "Python",
    "topics": []
   }
  ],
@@ -235,7 +211,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7630,
+   "stars": 7640,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -264,7 +240,7 @@
    "url": "https://github.com/ilyamiro/shell-wallpapers",
    "text": "A collection of my wallpapers for all those in need.",
    "fork": false,
-   "stars": 216,
+   "stars": 217,
    "language": null,
    "topics": []
   },
@@ -282,7 +258,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 51,
+   "stars": 56,
    "language": "Rust",
    "topics": []
   },
@@ -415,6 +391,15 @@
    "topics": []
   },
   {
+   "name": "serpantinum-core",
+   "url": "https://github.com/ilyamiro/serpantinum-core",
+   "text": "A core of services for Serpantinum shell in Rust.",
+   "fork": false,
+   "stars": 1,
+   "language": "Rust",
+   "topics": []
+  },
+  {
    "name": "nixpkgs",
    "url": "https://github.com/ilyamiro/nixpkgs",
    "text": "Nix Packages collection & NixOS",
@@ -430,15 +415,6 @@
    "fork": false,
    "stars": 1,
    "language": "C",
-   "topics": []
-  },
-  {
-   "name": "serpantinum-core",
-   "url": "https://github.com/ilyamiro/serpantinum-core",
-   "text": "A core of services for Serpantinum shell in Rust.",
-   "fork": false,
-   "stars": 0,
-   "language": "Rust",
    "topics": []
   },
   {
