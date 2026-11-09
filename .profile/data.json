@@ -1,13 +1,13 @@
 {
- "key": "b987e0a0",
- "stars": 8325,
- "contributions": 2599,
+ "key": "11dd2703",
+ "stars": 8335,
+ "contributions": 2609,
  "repos": 22,
  "followers": 885,
  "languages": [
   [
    "QML",
-   6315839
+   6417024
   ],
   [
    "Rust",
@@ -15,11 +15,11 @@
   ],
   [
    "Python",
-   1461965
+   1462112
   ],
   [
    "JavaScript",
-   340125
+   406017
   ],
   [
    "C++",
@@ -111,11 +111,15 @@
   ],
   [
    {
-    "c": 9,
+    "c": 11,
     "day": 8,
+    "today": false
+   },
+   {
+    "c": 8,
+    "day": 9,
     "today": true
    },
-   null,
    null,
    null,
    null,
@@ -124,8 +128,8 @@
   ]
  ],
  "streak": {
-  "current": 43,
-  "longest": 43
+  "current": 44,
+  "longest": 44
  },
  "pins": [
   {
@@ -133,7 +137,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7640,
+   "stars": 7649,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -153,7 +157,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 56,
+   "stars": 57,
    "language": "Rust",
    "topics": []
   },
@@ -211,7 +215,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7640,
+   "stars": 7649,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -240,7 +244,7 @@
    "url": "https://github.com/ilyamiro/shell-wallpapers",
    "text": "A collection of my wallpapers for all those in need.",
    "fork": false,
-   "stars": 217,
+   "stars": 218,
    "language": null,
    "topics": []
   },
@@ -258,7 +262,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 56,
+   "stars": 57,
    "language": "Rust",
    "topics": []
   },
@@ -364,15 +368,6 @@
    "topics": []
   },
   {
-   "name": "Acanthus",
-   "url": "https://github.com/ilyamiro/Acanthus",
-   "text": "An engine for your desktop",
-   "fork": false,
-   "stars": 2,
-   "language": "Rust",
-   "topics": []
-  },
-  {
    "name": "done-cli",
    "url": "https://github.com/ilyamiro/done-cli",
    "text": "A simple utility to log everyday actions",
@@ -406,6 +401,15 @@
    "fork": true,
    "stars": 1,
    "language": "Nix",
+   "topics": []
+  },
+  {
+   "name": "Acanthus",
+   "url": "https://github.com/ilyamiro/Acanthus",
+   "text": "An engine for your desktop",
+   "fork": false,
+   "stars": 1,
+   "language": "Rust",
    "topics": []
   },
   {
