@@ -1,25 +1,25 @@
 {
- "key": "11dd2703",
- "stars": 8335,
- "contributions": 2609,
+ "key": "329dce35",
+ "stars": 8350,
+ "contributions": 2665,
  "repos": 22,
- "followers": 885,
+ "followers": 886,
  "languages": [
   [
    "QML",
-   6417024
+   6439153
   ],
   [
    "Rust",
-   4918675
+   4934416
   ],
   [
    "Python",
-   1462112
+   1463825
   ],
   [
    "JavaScript",
-   406017
+   408064
   ],
   [
    "C++",
@@ -30,8 +30,8 @@
    95285
   ],
   [
-   "CSS",
-   83850
+   "GLSL",
+   89930
   ]
  ],
  "days": [
@@ -116,11 +116,15 @@
     "today": false
    },
    {
-    "c": 8,
+    "c": 13,
     "day": 9,
+    "today": false
+   },
+   {
+    "c": 51,
+    "day": 10,
     "today": true
    },
-   null,
    null,
    null,
    null,
@@ -128,8 +132,8 @@
   ]
  ],
  "streak": {
-  "current": 44,
-  "longest": 44
+  "current": 45,
+  "longest": 45
  },
  "pins": [
   {
@@ -137,7 +141,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7649,
+   "stars": 7663,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -204,7 +208,7 @@
    "url": "https://github.com/ilyamiro/chesser",
    "text": "Convert any image into chess boards",
    "fork": false,
-   "stars": 5,
+   "stars": 6,
    "language": "Python",
    "topics": []
   }
@@ -215,7 +219,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7649,
+   "stars": 7663,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -309,7 +313,7 @@
    "url": "https://github.com/ilyamiro/chesser",
    "text": "Convert any image into chess boards",
    "fork": false,
-   "stars": 5,
+   "stars": 6,
    "language": "Python",
    "topics": []
   },
