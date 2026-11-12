@@ -1,13 +1,13 @@
 {
- "key": "2dbf8689",
- "stars": 8363,
+ "key": "9d126167",
+ "stars": 8378,
  "contributions": 2684,
  "repos": 22,
- "followers": 886,
+ "followers": 891,
  "languages": [
   [
    "QML",
-   6455094
+   6394386
   ],
   [
    "Rust",
@@ -128,9 +128,13 @@
    {
     "c": 10,
     "day": 11,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 12,
     "today": true
    },
-   null,
    null,
    null
   ]
@@ -145,7 +149,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7674,
+   "stars": 7685,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -212,7 +216,7 @@
    "url": "https://github.com/ilyamiro/chesser",
    "text": "Convert any image into chess boards",
    "fork": false,
-   "stars": 6,
+   "stars": 7,
    "language": "Python",
    "topics": []
   }
@@ -223,7 +227,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7674,
+   "stars": 7685,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -252,7 +256,7 @@
    "url": "https://github.com/ilyamiro/shell-wallpapers",
    "text": "A collection of my wallpapers for all those in need.",
    "fork": false,
-   "stars": 218,
+   "stars": 219,
    "language": null,
    "topics": []
   },
@@ -317,7 +321,7 @@
    "url": "https://github.com/ilyamiro/chesser",
    "text": "Convert any image into chess boards",
    "fork": false,
-   "stars": 6,
+   "stars": 7,
    "language": "Python",
    "topics": []
   },
@@ -326,7 +330,7 @@
    "url": "https://github.com/ilyamiro/serpantinum-audio",
    "text": "A c++ audio daemon for serpantinum",
    "fork": false,
-   "stars": 5,
+   "stars": 6,
    "language": "C++",
    "topics": []
   },
@@ -376,6 +380,15 @@
    "topics": []
   },
   {
+   "name": "serpantinum-core",
+   "url": "https://github.com/ilyamiro/serpantinum-core",
+   "text": "A core of services for Serpantinum shell in Rust.",
+   "fork": false,
+   "stars": 2,
+   "language": "Rust",
+   "topics": []
+  },
+  {
    "name": "done-cli",
    "url": "https://github.com/ilyamiro/done-cli",
    "text": "A simple utility to log everyday actions",
@@ -391,15 +404,6 @@
    "fork": false,
    "stars": 2,
    "language": "Python",
-   "topics": []
-  },
-  {
-   "name": "serpantinum-core",
-   "url": "https://github.com/ilyamiro/serpantinum-core",
-   "text": "A core of services for Serpantinum shell in Rust.",
-   "fork": false,
-   "stars": 1,
-   "language": "Rust",
    "topics": []
   },
   {
