@@ -1,13 +1,13 @@
 {
- "key": "831e01f5",
- "stars": 8391,
- "contributions": 2685,
+ "key": "fae86930",
+ "stars": 8400,
+ "contributions": 2737,
  "repos": 22,
- "followers": 890,
+ "followers": 892,
  "languages": [
   [
    "QML",
-   6394978
+   6395650
   ],
   [
    "Rust",
@@ -19,7 +19,7 @@
   ],
   [
    "JavaScript",
-   408064
+   408373
   ],
   [
    "C++",
@@ -131,21 +131,25 @@
     "today": false
    },
    {
-    "c": 0,
+    "c": 13,
     "day": 12,
     "today": false
    },
    {
-    "c": 1,
+    "c": 36,
     "day": 13,
-    "today": true
+    "today": false
    },
-   null
+   {
+    "c": 4,
+    "day": 14,
+    "today": true
+   }
   ]
  ],
  "streak": {
-  "current": 1,
-  "longest": 46
+  "current": 49,
+  "longest": 49
  },
  "pins": [
   {
@@ -153,7 +157,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7697,
+   "stars": 7705,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -173,7 +177,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 58,
+   "stars": 60,
    "language": "Rust",
    "topics": []
   },
@@ -231,7 +235,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7697,
+   "stars": 7705,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -251,7 +255,7 @@
    "url": "https://github.com/ilyamiro/imperative-dots",
    "text": "A collection of my dots for those who are not using NixOS with an install script.",
    "fork": false,
-   "stars": 233,
+   "stars": 232,
    "language": "QML",
    "topics": []
   },
@@ -278,7 +282,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 58,
+   "stars": 60,
    "language": "Rust",
    "topics": []
   },
