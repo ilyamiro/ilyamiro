@@ -1,13 +1,13 @@
 {
- "key": "73390522",
- "stars": 8423,
- "contributions": 2826,
+ "key": "f8aa241e",
+ "stars": 8430,
+ "contributions": 2830,
  "repos": 22,
- "followers": 894,
+ "followers": 895,
  "languages": [
   [
    "QML",
-   6395709
+   6395690
   ],
   [
    "Rust",
@@ -121,19 +121,23 @@
     "today": false
    },
    {
-    "c": 4,
+    "c": 7,
     "day": 17,
+    "today": false
+   },
+   {
+    "c": 1,
+    "day": 18,
     "today": true
    },
-   null,
    null,
    null,
    null
   ]
  ],
  "streak": {
-  "current": 52,
-  "longest": 52
+  "current": 53,
+  "longest": 53
  },
  "pins": [
   {
@@ -141,7 +145,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7727,
+   "stars": 7732,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -161,7 +165,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 60,
+   "stars": 62,
    "language": "Rust",
    "topics": []
   },
@@ -219,7 +223,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7727,
+   "stars": 7732,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -253,21 +257,21 @@
    "topics": []
   },
   {
+   "name": "Ski",
+   "url": "https://github.com/ilyamiro/Ski",
+   "text": "A fast and convinient file manager",
+   "fork": false,
+   "stars": 62,
+   "language": "Rust",
+   "topics": []
+  },
+  {
    "name": "hypr-comp",
    "url": "https://github.com/ilyamiro/hypr-comp",
    "text": "A repository containing files for hyprland's #5 ricing competition",
    "fork": false,
    "stars": 62,
    "language": "QML",
-   "topics": []
-  },
-  {
-   "name": "Ski",
-   "url": "https://github.com/ilyamiro/Ski",
-   "text": "A fast and convinient file manager",
-   "fork": false,
-   "stars": 60,
-   "language": "Rust",
    "topics": []
   },
   {
