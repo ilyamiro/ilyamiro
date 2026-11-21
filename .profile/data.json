@@ -1,17 +1,17 @@
 {
- "key": "d7abe8af",
- "stars": 8447,
- "contributions": 2837,
+ "key": "e22cad31",
+ "stars": 8453,
+ "contributions": 2853,
  "repos": 22,
  "followers": 895,
  "languages": [
   [
    "QML",
-   6395690
+   6415011
   ],
   [
    "Rust",
-   4936884
+   4954648
   ],
   [
    "Python",
@@ -26,12 +26,12 @@
    139578
   ],
   [
-   "C",
-   95285
+   "GLSL",
+   104879
   ],
   [
-   "GLSL",
-   91243
+   "CSS",
+   104394
   ]
  ],
  "days": [
@@ -136,16 +136,20 @@
     "today": false
    },
    {
-    "c": 4,
+    "c": 12,
     "day": 20,
-    "today": true
+    "today": false
    },
-   null
+   {
+    "c": 8,
+    "day": 21,
+    "today": true
+   }
   ]
  ],
  "streak": {
-  "current": 55,
-  "longest": 55
+  "current": 56,
+  "longest": 56
  },
  "pins": [
   {
@@ -153,7 +157,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7750,
+   "stars": 7756,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -231,7 +235,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7750,
+   "stars": 7756,
    "language": "QML",
    "topics": [
     "desktop-environment",
