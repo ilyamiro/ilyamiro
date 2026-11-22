@@ -1,17 +1,17 @@
 {
- "key": "e22cad31",
- "stars": 8453,
- "contributions": 2853,
+ "key": "da2f8c62",
+ "stars": 8465,
+ "contributions": 2858,
  "repos": 22,
- "followers": 895,
+ "followers": 897,
  "languages": [
   [
    "QML",
-   6415011
+   6433441
   ],
   [
    "Rust",
-   4954648
+   4963644
   ],
   [
    "Python",
@@ -27,7 +27,7 @@
   ],
   [
    "GLSL",
-   104879
+   108432
   ],
   [
    "CSS",
@@ -35,43 +35,6 @@
   ]
  ],
  "days": [
-  [
-   {
-    "c": 37,
-    "day": 1,
-    "today": false
-   },
-   {
-    "c": 53,
-    "day": 2,
-    "today": false
-   },
-   {
-    "c": 49,
-    "day": 3,
-    "today": false
-   },
-   {
-    "c": 46,
-    "day": 4,
-    "today": false
-   },
-   {
-    "c": 34,
-    "day": 5,
-    "today": false
-   },
-   {
-    "c": 29,
-    "day": 6,
-    "today": false
-   },
-   {
-    "c": 51,
-    "day": 7,
-    "today": false
-   }
-  ],
   [
    {
     "c": 11,
@@ -141,10 +104,23 @@
     "today": false
    },
    {
-    "c": 8,
+    "c": 13,
     "day": 21,
-    "today": true
+    "today": false
    }
+  ],
+  [
+   {
+    "c": 0,
+    "day": 22,
+    "today": true
+   },
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
   ]
  ],
  "streak": {
@@ -157,7 +133,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7756,
+   "stars": 7767,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -177,7 +153,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 63,
+   "stars": 64,
    "language": "Rust",
    "topics": []
   },
@@ -235,7 +211,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7756,
+   "stars": 7767,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -273,7 +249,7 @@
    "url": "https://github.com/ilyamiro/Ski",
    "text": "A fast and convinient file manager",
    "fork": false,
-   "stars": 63,
+   "stars": 64,
    "language": "Rust",
    "topics": []
   },
