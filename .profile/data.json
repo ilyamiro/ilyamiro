@@ -1,13 +1,13 @@
 {
- "key": "c5b2cc1b",
- "stars": 8523,
- "contributions": 2925,
- "repos": 23,
+ "key": "4cbe93ab",
+ "stars": 8534,
+ "contributions": 2952,
+ "repos": 24,
  "followers": 904,
  "languages": [
   [
    "QML",
-   6606349
+   6936075
   ],
   [
    "Rust",
@@ -15,15 +15,15 @@
   ],
   [
    "Python",
-   1632148
+   1634310
   ],
   [
    "JavaScript",
-   431526
+   438790
   ],
   [
    "GLSL",
-   154447
+   171703
   ],
   [
    "C++",
@@ -31,7 +31,7 @@
   ],
   [
    "TypeScript",
-   125360
+   125385
   ]
  ],
  "days": [
@@ -131,16 +131,20 @@
     "today": false
    },
    {
-    "c": 6,
+    "c": 21,
     "day": 26,
+    "today": false
+   },
+   {
+    "c": 12,
+    "day": 27,
     "today": true
    },
-   null,
    null
   ]
  ],
  "streak": {
-  "current": 4,
+  "current": 5,
   "longest": 56
  },
  "pins": [
@@ -149,7 +153,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7824,
+   "stars": 7834,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -227,7 +231,7 @@
    "url": "https://github.com/ilyamiro/serpantinum",
    "text": "A shell for wayland compositors",
    "fork": false,
-   "stars": 7824,
+   "stars": 7834,
    "language": "QML",
    "topics": [
     "desktop-environment",
@@ -256,7 +260,7 @@
    "url": "https://github.com/ilyamiro/shell-wallpapers",
    "text": "A collection of my wallpapers for all those in need.",
    "fork": false,
-   "stars": 219,
+   "stars": 220,
    "language": null,
    "topics": []
   },
@@ -431,6 +435,15 @@
    "fork": false,
    "stars": 1,
    "language": "C",
+   "topics": []
+  },
+  {
+   "name": "serp-omarchy-music",
+   "url": "https://github.com/ilyamiro/serp-omarchy-music",
+   "text": "An omarchy plugin with a serpantinum music widget",
+   "fork": false,
+   "stars": 0,
+   "language": "QML",
    "topics": []
   },
   {
