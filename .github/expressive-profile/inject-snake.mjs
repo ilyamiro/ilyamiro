@@ -5,15 +5,17 @@
  *
  * - Runs an autonomous Serpantinum steering AI (FluidBackground roaming &
  *   lounging + Snake.js organic wander & quadratic wall repulsion) at 60 Hz
- *   across the unified Hero (840x210) + Socials (840x88) space for ~95-105s
- *   of varied, structure-aware, edge-respecting, non-repetitive movement.
+ *   across the unified Hero (840x210) + Socials (840x88) space for ~48-54s
+ *   of liquid-smooth, structure-aware, edge-respecting movement.
  * - Uses a fresh random seed on every run (or --seed=<uint> for reproducibility).
- * - Renders pixel-accurate self-crossing cast shadows (4 concentric exact-
+ * - Randomly chooses over/under layering for EVERY bottom social button
+ *   (Telegram, YouTube, Reddit, Discord, Email) on EVERY Socials excursion.
+ * - Renders pixel-accurate self-crossing cast shadows (3 concentric exact-
  *   boundary shells matching snake.frag's Gaussian falloff with zero bleed),
- *   exact head cutout (evenodd), fluttering forked tongue, and native
- *   over/under weaving across Avatar, FOSS, Denmark, "Ilyamiro", and Socials.
- * - Uses compact relative SMIL paths (M + l/q/c/z only) + adaptive error-
- *   bounded keyframes for smooth cross-browser (Chrome/Firefox/Safari) motion.
+ *   exact midpoint-to-midpoint C1 piece joins (zero corner spikes on turns),
+ *   exact head cutout (evenodd), and fluttering forked tongue.
+ * - Uses compact relative SMIL paths (M + l/q/c/z only) + high-fps adaptive
+ *   keyframes (10-15 fps, <=0.65px error) for fluid Chrome/Firefox/Safari motion.
  * - Idempotent: strips any previous injection before re-injecting.
  */
 
@@ -53,36 +55,36 @@ const SOCIAL_H = 88;
 
 const SLICES = [
   { name: 'hero',     x0: 0,      x1: 840,    y0: 0,         y1: HERO_H,             isHero: true },
-  { name: 'social-l', x0: 0,      x1: 73.5,   y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, clipRect: [0, 0, 113.5, 88, 32], mode: 'over' },
-  { name: 'social-1', x0: 73.5,   x1: 225.73, y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, mode: 'over' },  // Telegram: ON TOP
-  { name: 'social-2', x0: 225.73, x1: 373.43, y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, mode: 'under' }, // YouTube: UNDER
-  { name: 'social-3', x0: 373.43, x1: 503.47, y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, mode: 'over' },  // Reddit: ON TOP
-  { name: 'social-4', x0: 503.47, x1: 645.02, y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, mode: 'under' }, // Discord: UNDER
-  { name: 'social-5', x0: 645.02, x1: 766.5,  y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, mode: 'over' },  // Email: ON TOP
-  { name: 'social-r', x0: 766.5,  x1: 840,    y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, clipRect: [-40, 0, 113.5, 88, 32], mode: 'over' },
+  { name: 'social-l', x0: 0,      x1: 73.5,   y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, clipRect: [0, 0, 113.5, 88, 32], btnIdx: -1 },
+  { name: 'social-1', x0: 73.5,   x1: 225.73, y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, btnIdx: 0, label: 'Telegram' },
+  { name: 'social-2', x0: 225.73, x1: 373.43, y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, btnIdx: 1, label: 'YouTube' },
+  { name: 'social-3', x0: 373.43, x1: 503.47, y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, btnIdx: 2, label: 'Reddit' },
+  { name: 'social-4', x0: 503.47, x1: 645.02, y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, btnIdx: 3, label: 'Discord' },
+  { name: 'social-5', x0: 645.02, x1: 766.5,  y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, btnIdx: 4, label: 'Email' },
+  { name: 'social-r', x0: 766.5,  x1: 840,    y0: SOCIAL_Y0, y1: SOCIAL_Y0+SOCIAL_H, clipRect: [-40, 0, 113.5, 88, 32], btnIdx: -1 },
 ];
 
 // Button center X positions (safe crossing doors away from slice seams)
 const SOCIAL_DOORS = [149.6, 299.6, 438.4, 574.2, 705.8];
 
 // Generous interior margins (never crowds edges or rounded card corners)
-const HERO_SAFE = { minX: 74, maxX: 766, minY: 44, maxY: 174 };
-const SOC_SAFE  = { minX: 106, maxX: 734, minY: 238, maxY: 282 };
+const HERO_SAFE = { minX: 78, maxX: 762, minY: 44, maxY: 174 };
+const SOC_SAFE  = { minX: 112, maxX: 728, minY: 239, maxY: 281 };
 
 // ============================================================================
-// 2. Serpantinum Snake Constants (ported from FluidBackground/index.tsx & Snake.js)
+// 2. Serpantinum Snake Constants (liquid-smooth curvature + zero-kink stiffness)
 // ============================================================================
 const UNIT = 0.78;
 const FIXED_DT = 1 / 60;
 const SNAKE_SEGMENTS = 44;
 const SNAKE_SEG_LEN = 6.8 * UNIT;
-const MAX_TURN_PER_SEG = 0.26;
+const MAX_TURN_PER_SEG = 0.205; // graceful curves, prevents inner-edge cusps
 const COS_MAX_TURN = Math.cos(MAX_TURN_PER_SEG);
 const SIN_MAX_TURN = Math.sin(MAX_TURN_PER_SEG);
-const MIN_TURN_RADIUS = 24 * UNIT;
-const ACCEL_UP_BLEND = 1 - Math.exp(-3.2 * FIXED_DT);
-const ACCEL_DOWN_BLEND = 1 - Math.exp(-3.6 * FIXED_DT);
-const WEAVE_AMPLITUDE = 8.4 * UNIT;
+const MIN_TURN_RADIUS = 30 * UNIT;
+const ACCEL_UP_BLEND = 1 - Math.exp(-2.8 * FIXED_DT);
+const ACCEL_DOWN_BLEND = 1 - Math.exp(-3.2 * FIXED_DT);
+const WEAVE_AMPLITUDE = 8.2 * UNIT;
 const NOMINAL_WAVENUMBER = (Math.PI * 2) / (200 * UNIT);
 const WEAVE_NECK_SEGMENTS = 12;
 
@@ -113,28 +115,21 @@ function snakeHalfWidth(index) {
 // ============================================================================
 // 3. Autonomous Serpantinum Steering AI (FluidBackground + Snake.js)
 // ============================================================================
-// Landmarks in Hero (y: 0..210):
-//   Avatar cookie12: center (281.4, 105), r=82 (BEHIND)
-//   "Ilyamiro":      x: 414..634, y: 36..90 (OVER)
-//   Subtitle:        x: 422..626, y: 98..120 (OVER)
-//   Denmark chip:    x: 415.6..533.1, y: 134..170 (OVER)
-//   FOSS chip:       x: 541.1..632.4, y: 134..170 (UNDER)
 const HERO_ZONES = [
-  { id: 'avatar',  cx: 281, cy: 105, rx: 52, ry: 42, weight: 1.5 },
+  { id: 'avatar',  cx: 281, cy: 105, rx: 52, ry: 40, weight: 1.5 },
   { id: 'title',   cx: 524, cy:  66, rx: 86, ry: 18, weight: 1.4 },
   { id: 'denmark', cx: 474, cy: 148, rx: 46, ry: 14, weight: 1.2 },
   { id: 'foss',    cx: 586, cy: 148, rx: 38, ry: 14, weight: 1.2 },
-  { id: 'left',    cx: 148, cy: 108, rx: 44, ry: 46, weight: 1.0 },
-  { id: 'right',   cx: 684, cy: 106, rx: 44, ry: 44, weight: 1.1 },
-  { id: 'free',    cx: 420, cy: 108, rx: 280, ry: 54, weight: 1.4 },
+  { id: 'left',    cx: 152, cy: 108, rx: 42, ry: 44, weight: 1.0 },
+  { id: 'right',   cx: 680, cy: 106, rx: 42, ry: 42, weight: 1.1 },
+  { id: 'free',    cx: 420, cy: 108, rx: 270, ry: 52, weight: 1.4 },
 ];
 
 function simulateAutonomousPath(seed) {
   const rng = mulberry32(seed);
   const randRange = (lo, hi) => lo + rng() * (hi - lo);
-  const randChoice = (arr) => arr[Math.floor(rng() * arr.length)];
 
-  const TARGET_ROAM_SEC = 64; // ~68-74s total after smooth return home
+  const TARGET_ROAM_SEC = 44; // ~48-54s total after smooth return home (10-15 fps!)
   const WARMUP_SEC = 5.0;
 
   const jointX = new Float64Array(SNAKE_SEGMENTS);
@@ -144,64 +139,83 @@ function simulateAutonomousPath(seed) {
 
   for (let i = 0; i < SNAKE_SEGMENTS; i++) {
     halfWidths[i] = snakeHalfWidth(i);
-    const neck = Math.min(1, i / WEAVE_NECK_SEGMENTS);
-    const tail = 1 - 0.4 * (i / (SNAKE_SEGMENTS - 1));
-    weaveEnvelope[i] = WEAVE_AMPLITUDE * neck * neck * (3 - 2 * neck) * tail;
+    if (i <= 1) {
+      weaveEnvelope[i] = 0;
+    } else {
+      const neck = Math.min(1, (i - 1) / WEAVE_NECK_SEGMENTS);
+      const tail = 1 - 0.4 * (i / (SNAKE_SEGMENTS - 1));
+      weaveEnvelope[i] = WEAVE_AMPLITUDE * neck * neck * (3 - 2 * neck) * tail;
+    }
   }
 
   // Initial pose in Hero interior
-  const initX = randRange(220, 560);
-  const initY = randRange(75, 140);
-  let headAngle = randRange(-0.5, 0.5) + (rng() < 0.5 ? 0 : Math.PI);
-  headAngle = normalizeAngle(headAngle);
+  const initX = randRange(230, 560);
+  const initY = randRange(78, 138);
+  let headAngle = normalizeAngle(randRange(-0.45, 0.45) + (rng() < 0.5 ? 0 : Math.PI));
   for (let i = 0; i < SNAKE_SEGMENTS; i++) {
     jointX[i] = initX - Math.cos(headAngle) * i * SNAKE_SEG_LEN;
     jointY[i] = initY - Math.sin(headAngle) * i * SNAKE_SEG_LEN;
   }
 
-  let headSpeed = 112;
-  let cruiseSpeed = 122;
-  let speedTimer = randRange(1.5, 3.2);
+  let headSpeed = 110;
+  let cruiseSpeed = 118;
+  let speedTimer = randRange(1.5, 3.0);
   let wanderTurn = 0;
   let wanderTarget = 0;
   let wanderTimer = randRange(1.0, 2.0);
+  let turnVel = 0; // smooth angular velocity (prevents sudden steering kinks!)
   let turnCommitSign = 1;
   let weaveScale = 0.85;
-  let tongueTimer = randRange(2.5, 5.5);
+  let tongueTimer = randRange(2.4, 5.2);
   let tongueProgress = 0;
 
   // Autonomous behavioral state
-  let mode = 'HERO_ROAM'; // HERO_ROAM | HERO_COIL | DIVE_TO_SOCIALS | SOCIALS_WEAVE | CLIMB_TO_HERO | HOMING_APPROACH | HOMING_LOCK
+  let mode = 'HERO_ROAM';
   let lastZoneId = '';
   let lastDoorIdx = -1;
   let targetX = 480;
   let targetY = 100;
   let roamTimer = 0;
 
-  let timeSinceSocials = randRange(3, 6);
-  let nextSocialsInterval = randRange(9, 14);
-  let timeSinceCoil = randRange(5, 9);
-  let nextCoilInterval = randRange(12, 18);
+  let timeSinceSocials = randRange(3, 5);
+  let nextSocialsInterval = randRange(7.5, 11.5);
+  let timeSinceCoil = randRange(4, 7);
+  let nextCoilInterval = randRange(11, 16);
 
   // Coil / lounge state (FluidBackground-inspired natural orbit)
   let coilCenterX = 0;
   let coilCenterY = 0;
   let coilSign = 1;
-  let coilRadius = 30;
+  let coilRadius = 34;
   let coilTimeLeft = 0;
 
-  // Socials excursion state
+  // Socials excursion state + random per-excursion button over/under modes
   let doorX = 438.4;
-  let divePhase = 0; // 0: approach top of door, 1: dive across gap
+  let divePhase = 0;
   let socDir = 1;
   let socExitX = 149.6;
   let socWavePhase = 0;
-  let socWaveFreq = 0.022;
+  let socWaveFreq = 0.020;
   let socVisits = 0;
   let coilCount = 0;
   const visitedBtns = new Uint8Array(SOCIAL_DOORS.length);
+  let activeSocialModes = ['over', 'under', 'over', 'under', 'over'];
+  const excursionLogs = [];
 
-  // Snapshot of recording start state (captured right after warmup)
+  function rollRandomSocialModes() {
+    // Independently choose 'over' or 'under' for each of the 5 bottom buttons!
+    const modes = [];
+    for (let b = 0; b < 5; b++) {
+      modes.push(rng() < 0.5 ? 'over' : 'under');
+    }
+    // Avoid degenerate all-5-same so both over and under appear organically
+    if (modes.every((m) => m === modes[0])) {
+      const flip = Math.floor(rng() * 5);
+      modes[flip] = modes[flip] === 'over' ? 'under' : 'over';
+    }
+    return modes;
+  }
+
   let startSnap = null;
   let homeApproachX = 0;
   let homeApproachY = 0;
@@ -229,15 +243,17 @@ function simulateAutonomousPath(seed) {
     lastZoneId = bestZone;
     targetX = bestX;
     targetY = bestY;
-    roamTimer = randRange(2.4, 4.4);
+    roamTimer = randRange(2.4, 4.2);
   }
 
   function startSocialsDive() {
-    // Pick a button door different from the previous dive, gently preferring unvisited buttons
+    // Roll fresh random over/under layering for all 5 bottom buttons while snake is still in Hero!
+    activeSocialModes = rollRandomSocialModes();
+
     const cands = SOCIAL_DOORS.map((x, idx) => ({
       idx,
       x,
-      w: (idx === lastDoorIdx ? 0.12 : 1.0) * (visitedBtns[idx] ? 0.45 : 2.2) / (1 + Math.abs(x - jointX[0]) / 340),
+      w: (idx === lastDoorIdx ? 0.12 : 1.0) * (visitedBtns[idx] ? 0.4 : 2.5) / (1 + Math.abs(x - jointX[0]) / 340),
     }));
     const sumW = cands.reduce((s, c) => s + c.w, 0);
     let r = rng() * sumW;
@@ -247,20 +263,19 @@ function simulateAutonomousPath(seed) {
       if (r <= 0) { chosen = c; break; }
     }
     lastDoorIdx = chosen.idx;
-    doorX = chosen.x + randRange(-14, 14);
+    doorX = chosen.x + randRange(-12, 12);
     divePhase = 0;
     mode = 'DIVE_TO_SOCIALS';
   }
 
   function startHeroCoil() {
-    // Place coil center slightly ahead and to one side so it naturally curves back over its own body!
     coilSign = rng() < 0.5 ? 1 : -1;
-    coilRadius = randRange(25, 33);
+    coilRadius = randRange(31, 38); // matches website lounge radius (zero pinching!)
     const nx = -Math.sin(headAngle) * coilSign;
     const ny = Math.cos(headAngle) * coilSign;
-    coilCenterX = Math.max(HERO_SAFE.minX + 52, Math.min(HERO_SAFE.maxX - 52, jointX[0] + nx * coilRadius));
-    coilCenterY = Math.max(HERO_SAFE.minY + 34, Math.min(HERO_SAFE.maxY - 34, jointY[0] + ny * coilRadius));
-    coilTimeLeft = randRange(2.3, 3.1);
+    coilCenterX = Math.max(HERO_SAFE.minX + 56, Math.min(HERO_SAFE.maxX - 56, jointX[0] + nx * coilRadius));
+    coilCenterY = Math.max(HERO_SAFE.minY + 38, Math.min(HERO_SAFE.maxY - 38, jointY[0] + ny * coilRadius));
+    coilTimeLeft = randRange(2.5, 3.3);
     mode = 'HERO_COIL';
     coilCount++;
   }
@@ -270,7 +285,6 @@ function simulateAutonomousPath(seed) {
       (best, x, i) => (Math.abs(x - jointX[0]) < Math.abs(SOCIAL_DOORS[best] - jointX[0]) ? i : best),
       0
     );
-    // Prefer heading toward the side with more unvisited buttons (still random!)
     let leftUnvis = 0, rightUnvis = 0;
     for (let i = 0; i < enterIdx; i++) if (!visitedBtns[i]) leftUnvis++;
     for (let i = enterIdx + 1; i < SOCIAL_DOORS.length; i++) if (!visitedBtns[i]) rightUnvis++;
@@ -279,8 +293,8 @@ function simulateAutonomousPath(seed) {
     if (rightRoom === 0) socDir = -1;
     else if (leftRoom === 0) socDir = 1;
     else {
-      const rWeight = rightRoom + rightUnvis * 2.5;
-      const lWeight = leftRoom + leftUnvis * 2.5;
+      const rWeight = rightRoom + rightUnvis * 2.8;
+      const lWeight = leftRoom + leftUnvis * 2.8;
       socDir = rng() < rWeight / (rWeight + lWeight) ? 1 : -1;
     }
 
@@ -290,10 +304,16 @@ function simulateAutonomousPath(seed) {
     const lo = Math.min(enterIdx, exitIdx);
     const hi = Math.max(enterIdx, exitIdx);
     for (let i = lo; i <= hi; i++) visitedBtns[i] = 1;
-    socExitX = SOCIAL_DOORS[exitIdx] + randRange(-14, 14);
+    socExitX = SOCIAL_DOORS[exitIdx] + randRange(-12, 12);
     socWavePhase = randRange(0, Math.PI * 2);
-    socWaveFreq = randRange(0.017, 0.024);
+    socWaveFreq = randRange(0.016, 0.022);
     socVisits++;
+    const names = ['Tg', 'YT', 'Rd', 'Dc', 'Em'];
+    const summary = [];
+    for (let i = enterIdx; i !== exitIdx + socDir; i += socDir) {
+      summary.push(`${names[i]}:${activeSocialModes[i][0].toUpperCase()}`);
+    }
+    excursionLogs.push(summary.join('->'));
     mode = 'SOCIALS_WEAVE';
   }
 
@@ -304,7 +324,7 @@ function simulateAutonomousPath(seed) {
   let recTime = 0;
   let totalArcLen = 0;
   let finished = false;
-  const MAX_REC_SEC = TARGET_ROAM_SEC + 28;
+  const MAX_REC_SEC = TARGET_ROAM_SEC + 26;
 
   while (!finished && recTime < MAX_REC_SEC) {
     const isRecording = simTime >= WARMUP_SEC;
@@ -321,23 +341,23 @@ function simulateAutonomousPath(seed) {
     // Autonomous speed & organic wander drift (Snake.js style)
     speedTimer -= FIXED_DT;
     if (speedTimer <= 0) {
-      cruiseSpeed = rng() < 0.24 ? randRange(72, 96) : randRange(108, 146);
-      speedTimer = randRange(2.0, 3.8);
+      cruiseSpeed = rng() < 0.24 ? randRange(74, 96) : randRange(108, 142);
+      speedTimer = randRange(2.0, 3.6);
     }
     wanderTimer -= FIXED_DT;
     if (wanderTimer <= 0) {
-      const mag = rng() < 0.3 ? randRange(0.04, 0.14) : randRange(0.18, 0.40);
+      const mag = rng() < 0.3 ? randRange(0.04, 0.14) : randRange(0.16, 0.36);
       wanderTarget = (rng() < 0.5 ? -1 : 1) * mag;
-      wanderTimer = randRange(1.1, 2.2);
+      wanderTimer = randRange(1.2, 2.4);
     }
-    wanderTurn += (wanderTarget - wanderTurn) * (1 - Math.exp(-1.4 * FIXED_DT));
+    wanderTurn += (wanderTarget - wanderTurn) * (1 - Math.exp(-1.3 * FIXED_DT));
 
-    // Decide whether to begin homing back to startSnap
-    if (isRecording && recTime >= TARGET_ROAM_SEC && mode === 'HERO_ROAM') {
-      const backDist = 68;
+    // Begin smooth homing once target roam duration is reached and snake is cleanly inside Hero
+    if (isRecording && recTime >= TARGET_ROAM_SEC && mode === 'HERO_ROAM' && jointY[0] < HERO_H - 25) {
+      const backDist = 72;
       homeApproachX = Math.max(
-        HERO_SAFE.minX + 12,
-        Math.min(HERO_SAFE.maxX - 12, startSnap.jointX[0] - Math.cos(startSnap.headAngle) * backDist)
+        HERO_SAFE.minX + 14,
+        Math.min(HERO_SAFE.maxX - 14, startSnap.jointX[0] - Math.cos(startSnap.headAngle) * backDist)
       );
       homeApproachY = Math.max(
         HERO_SAFE.minY + 6,
@@ -352,8 +372,8 @@ function simulateAutonomousPath(seed) {
     let desiredTargetX = targetX;
     let desiredTargetY = targetY;
     let desiredSpeedBase = cruiseSpeed;
-    let targetWeave = 0.85;
-    let wanderStrength = 0.36;
+    let targetWeave = 0.84;
+    let wanderStrength = 0.34;
     let useHeroWalls = true;
     let useSocialWalls = false;
 
@@ -364,13 +384,18 @@ function simulateAutonomousPath(seed) {
       }
       roamTimer -= FIXED_DT;
       const dToTarget = Math.hypot(targetX - hx, targetY - hy);
-      if (dToTarget < 52 || roamTimer <= 0) {
-        const canDive = isRecording && recTime < TARGET_ROAM_SEC - 9 && timeSinceSocials >= nextSocialsInterval;
-        const inOpenHero = hx > 155 && hx < 685 && hy > 72 && hy < 146;
+      // Ensure tail has fully cleared Socials before allowing next dive (keeps over/under mode switch 100% clean!)
+      let tailInHero = true;
+      for (let i = 0; i < SNAKE_SEGMENTS; i++) {
+        if (jointY[i] >= HERO_H - 6) { tailInHero = false; break; }
+      }
+      if (dToTarget < 54 || roamTimer <= 0) {
+        const canDive = isRecording && tailInHero && recTime < TARGET_ROAM_SEC - 9 && timeSinceSocials >= nextSocialsInterval;
+        const inOpenHero = hx > 165 && hx < 675 && hy > 74 && hy < 144;
         const canCoil = isRecording && recTime < TARGET_ROAM_SEC - 6 && timeSinceCoil >= nextCoilInterval && inOpenHero;
         if (canDive) {
           timeSinceSocials = 0;
-          nextSocialsInterval = randRange(9, 14);
+          nextSocialsInterval = randRange(8.5, 13.0);
           startSocialsDive();
         } else if (canCoil) {
           timeSinceCoil = 0;
@@ -386,25 +411,25 @@ function simulateAutonomousPath(seed) {
     } else if (mode === 'HERO_COIL') {
       coilTimeLeft -= FIXED_DT;
       const angFromCenter = Math.atan2(hy - coilCenterY, hx - coilCenterX);
-      const orbitAng = angFromCenter + coilSign * 0.92;
+      const orbitAng = angFromCenter + coilSign * 0.88;
       desiredTargetX = coilCenterX + Math.cos(orbitAng) * coilRadius;
       desiredTargetY = coilCenterY + Math.sin(orbitAng) * coilRadius;
       desiredSpeedBase = 96;
-      targetWeave = 0.68;
-      wanderStrength = 0.08;
+      targetWeave = 0.56;
+      wanderStrength = 0.06;
       if (coilTimeLeft <= 0) {
         mode = 'HERO_ROAM';
         pickHeroTarget();
       }
     } else if (mode === 'DIVE_TO_SOCIALS') {
       useHeroWalls = false;
-      targetWeave = 0.56;
-      wanderStrength = 0.06;
-      desiredSpeedBase = 114;
+      targetWeave = 0.52;
+      wanderStrength = 0.05;
+      desiredSpeedBase = 112;
       if (divePhase === 0) {
         desiredTargetX = doorX;
-        desiredTargetY = 178;
-        if (Math.hypot(doorX - hx, 178 - hy) < 42 || hy > 175) {
+        desiredTargetY = 176;
+        if (Math.hypot(doorX - hx, 176 - hy) < 42 || hy > 174) {
           divePhase = 1;
         }
       } else {
@@ -417,18 +442,17 @@ function simulateAutonomousPath(seed) {
     } else if (mode === 'SOCIALS_WEAVE') {
       useHeroWalls = false;
       useSocialWalls = true;
-      targetWeave = 0.46;
-      wanderStrength = 0.08;
-      desiredSpeedBase = Math.max(94, Math.min(126, cruiseSpeed * 0.92));
-      const lookX = Math.max(SOC_SAFE.minX, Math.min(SOC_SAFE.maxX, hx + socDir * 68));
-      const waveY = 260 + Math.sin(lookX * socWaveFreq + socWavePhase) * 16;
+      targetWeave = 0.44;
+      wanderStrength = 0.06;
+      desiredSpeedBase = Math.max(94, Math.min(124, cruiseSpeed * 0.92));
+      const lookX = Math.max(SOC_SAFE.minX, Math.min(SOC_SAFE.maxX, hx + socDir * 72));
+      const waveY = 260 + Math.sin(lookX * socWaveFreq + socWavePhase) * 15;
       desiredTargetX = lookX;
       desiredTargetY = Math.max(SOC_SAFE.minY + 4, Math.min(SOC_SAFE.maxY - 4, waveY));
       const reachedExit = socDir > 0 ? hx >= socExitX - 18 : hx <= socExitX + 18;
       const hitLimit = socDir > 0 ? hx >= SOC_SAFE.maxX - 12 : hx <= SOC_SAFE.minX + 12;
       if (reachedExit || hitLimit) {
-        doorX = Math.max(125, Math.min(715, hx));
-        // Snap climb door slightly away from vertical seams
+        doorX = Math.max(130, Math.min(710, hx));
         for (const seam of [225.73, 373.43, 503.47, 645.02]) {
           if (Math.abs(doorX - seam) < 22) {
             doorX = seam + (doorX >= seam ? 24 : -24);
@@ -438,12 +462,12 @@ function simulateAutonomousPath(seed) {
       }
     } else if (mode === 'CLIMB_TO_HERO') {
       useHeroWalls = false;
-      targetWeave = 0.54;
-      wanderStrength = 0.06;
-      desiredSpeedBase = 114;
+      targetWeave = 0.50;
+      wanderStrength = 0.05;
+      desiredSpeedBase = 112;
       desiredTargetX = doorX;
-      desiredTargetY = 148;
-      if (hy <= 168) {
+      desiredTargetY = 146;
+      if (hy <= 166) {
         mode = 'HERO_ROAM';
         pickHeroTarget();
       }
@@ -451,7 +475,7 @@ function simulateAutonomousPath(seed) {
       homingTimer += FIXED_DT;
       desiredTargetX = homeApproachX;
       desiredTargetY = homeApproachY;
-      desiredSpeedBase = 116;
+      desiredSpeedBase = 114;
       targetWeave = startSnap.weaveScale;
       wanderStrength = 0;
       if (Math.hypot(homeApproachX - hx, homeApproachY - hy) < 34 || homingTimer > 8) {
@@ -487,33 +511,32 @@ function simulateAutonomousPath(seed) {
     let pushX = 0;
     let pushY = 0;
     if (useHeroWalls) {
-      const mX = 56;
-      const mY = 38;
+      const mX = 62;
+      const mY = 40;
       if (hx - HERO_SAFE.minX < mX) pushX += edgeWeight(hx - HERO_SAFE.minX, mX);
       if (HERO_SAFE.maxX - hx < mX) pushX -= edgeWeight(HERO_SAFE.maxX - hx, mX);
       if (hy - HERO_SAFE.minY < mY) pushY += edgeWeight(hy - HERO_SAFE.minY, mY);
       if (HERO_SAFE.maxY - hy < mY) pushY -= edgeWeight(HERO_SAFE.maxY - hy, mY);
     } else if (useSocialWalls) {
-      const mX = 48;
+      const mX = 52;
       const mY = 20;
       if (hx - SOC_SAFE.minX < mX) pushX += edgeWeight(hx - SOC_SAFE.minX, mX);
       if (SOC_SAFE.maxX - hx < mX) pushX -= edgeWeight(SOC_SAFE.maxX - hx, mX);
       if (hy - SOC_SAFE.minY < mY) pushY += edgeWeight(hy - SOC_SAFE.minY, mY);
       if (SOC_SAFE.maxY - hy < mY) pushY -= edgeWeight(SOC_SAFE.maxY - hy, mY);
     } else {
-      // Soft global safety fence during Hero<->Socials transitions
-      const mX = 48;
+      const mX = 52;
       if (hx - HERO_SAFE.minX < mX) pushX += edgeWeight(hx - HERO_SAFE.minX, mX);
       if (HERO_SAFE.maxX - hx < mX) pushX -= edgeWeight(HERO_SAFE.maxX - hx, mX);
-      if (hy < HERO_SAFE.minY + 12) pushY += edgeWeight(hy - HERO_SAFE.minY, 24);
+      if (hy < HERO_SAFE.minY + 14) pushY += edgeWeight(hy - HERO_SAFE.minY, 26);
       if (hy > SOC_SAFE.maxY - 4) pushY -= edgeWeight(SOC_SAFE.maxY - hy, 20);
     }
 
     let desiredHeading = rawTargetAngle;
     const wallStrength = Math.min(1, Math.hypot(pushX, pushY));
     if (wallStrength > 0.01) {
-      const sx = Math.cos(desiredHeading) + pushX * 2.6;
-      const sy = Math.sin(desiredHeading) + pushY * 2.6;
+      const sx = Math.cos(desiredHeading) + pushX * 2.4;
+      const sy = Math.sin(desiredHeading) + pushY * 2.4;
       desiredHeading = Math.atan2(sy, sx);
     }
 
@@ -523,20 +546,24 @@ function simulateAutonomousPath(seed) {
     }
 
     const turnAlignment = Math.max(0, Math.cos(headingDiff));
-    const desiredSpeed = desiredSpeedBase * (0.68 + 0.32 * turnAlignment);
+    const desiredSpeed = desiredSpeedBase * (0.72 + 0.28 * turnAlignment);
     headSpeed += (desiredSpeed - headSpeed) * (desiredSpeed > headSpeed ? ACCEL_UP_BLEND : ACCEL_DOWN_BLEND);
-    weaveScale += (targetWeave - weaveScale) * (1 - Math.exp(-3.2 * FIXED_DT));
 
-    const dynamicRadius = MIN_TURN_RADIUS + Math.min(28 * UNIT, headSpeed * 0.018);
+    // Smooth angular velocity (eliminates sudden curvature snaps!)
+    const dynamicRadius = MIN_TURN_RADIUS + Math.min(30 * UNIT, headSpeed * 0.022);
     const maxTurnRate = headSpeed / dynamicRadius;
-    const steerRate = Math.max(-maxTurnRate, Math.min(maxTurnRate, headingDiff * 3.4 + wanderTurn * wanderStrength));
-    headAngle = normalizeAngle(headAngle + steerRate * FIXED_DT);
+    const rawTurnRate = Math.max(-maxTurnRate, Math.min(maxTurnRate, headingDiff * 2.4 + wanderTurn * wanderStrength));
+    turnVel += (rawTurnRate - turnVel) * (1 - Math.exp(-6.5 * FIXED_DT));
+    headAngle = normalizeAngle(headAngle + turnVel * FIXED_DT);
+
+    // Gently dampen weave during tight turns so the inner curve never pinches!
+    const curveDamp = 1 / (1 + 0.35 * Math.abs(turnVel));
+    weaveScale += (targetWeave * curveDamp - weaveScale) * (1 - Math.exp(-3.4 * FIXED_DT));
 
     const stepDist = headSpeed * FIXED_DT;
     let nextX = hx + Math.cos(headAngle) * stepDist;
     let nextY = hy + Math.sin(headAngle) * stepDist;
 
-    // Hard safety clamps (keep generous clearance from card edges!)
     if (useHeroWalls) {
       nextX = Math.max(HERO_SAFE.minX - 6, Math.min(HERO_SAFE.maxX + 6, nextX));
       nextY = Math.max(HERO_SAFE.minY - 6, Math.min(HERO_SAFE.maxY + 6, nextY));
@@ -551,7 +578,7 @@ function simulateAutonomousPath(seed) {
     jointX[0] = nextX;
     jointY[0] = nextY;
 
-    // Follow-the-leader + angular stiffness
+    // Follow-the-leader + liquid angular stiffness
     let prevUx = -Math.cos(headAngle);
     let prevUy = -Math.sin(headAngle);
     for (let i = 1; i < SNAKE_SEGMENTS; i++) {
@@ -581,7 +608,7 @@ function simulateAutonomousPath(seed) {
       tongueProgress += FIXED_DT / 0.28;
       if (tongueProgress >= 1) {
         tongueProgress = 0;
-        tongueTimer = randRange(3.6, 7.6);
+        tongueTimer = randRange(3.4, 7.0);
       }
     } else {
       tongueTimer -= FIXED_DT;
@@ -599,6 +626,7 @@ function simulateAutonomousPath(seed) {
         jointY: Float64Array.from(jointY),
         weaveScale,
         tongueProgress,
+        socialModes: activeSocialModes,
       });
       recTime += FIXED_DT;
     }
@@ -635,8 +663,8 @@ function simulateAutonomousPath(seed) {
 
   const frames = recorded.map((rec) => {
     const gaitPhase = (rec.cumDist * syncedWavenumber) % (Math.PI * 2);
-    const bodyX = new Float64Array(SNAKE_SEGMENTS);
-    const bodyY = new Float64Array(SNAKE_SEGMENTS);
+    const rawBodyX = new Float64Array(SNAKE_SEGMENTS);
+    const rawBodyY = new Float64Array(SNAKE_SEGMENTS);
     for (let i = 0; i < SNAKE_SEGMENTS; i++) {
       const prev = i === 0 ? 0 : i - 1;
       const next = i === last ? last : i + 1;
@@ -644,11 +672,19 @@ function simulateAutonomousPath(seed) {
       const ty = rec.jointY[prev] - rec.jointY[next];
       const len = Math.hypot(tx, ty) || 1;
       const offset = weaveEnvelope[i] * rec.weaveScale * Math.sin(gaitPhase - i * SNAKE_SEG_LEN * syncedWavenumber);
-      bodyX[i] = rec.jointX[i] - (ty / len) * offset;
-      bodyY[i] = rec.jointY[i] + (tx / len) * offset;
+      rawBodyX[i] = rec.jointX[i] - (ty / len) * offset;
+      rawBodyY[i] = rec.jointY[i] + (tx / len) * offset;
     }
 
-    const headAngleNow = Math.atan2(rec.jointY[0] - rec.jointY[1], rec.jointX[0] - rec.jointX[1]);
+    // Gentle 1-pass Laplacian smoothing on interior spine for C2-smooth tangents
+    const bodyX = Float64Array.from(rawBodyX);
+    const bodyY = Float64Array.from(rawBodyY);
+    for (let i = 2; i < last - 1; i++) {
+      bodyX[i] = rawBodyX[i] * 0.68 + (rawBodyX[i - 1] + rawBodyX[i + 1]) * 0.16;
+      bodyY[i] = rawBodyY[i] * 0.68 + (rawBodyY[i - 1] + rawBodyY[i + 1]) * 0.16;
+    }
+
+    const headAngleNow = Math.atan2(bodyY[0] - bodyY[1], bodyX[0] - bodyX[1]);
     const leftX = new Float64Array(SNAKE_SEGMENTS);
     const leftY = new Float64Array(SNAKE_SEGMENTS);
     const rightX = new Float64Array(SNAKE_SEGMENTS);
@@ -682,6 +718,30 @@ function simulateAutonomousPath(seed) {
       if (ry > maxY) maxY = ry;
     }
 
+    // Anti-cusp relaxation: guarantee neither left nor right edge ever folds backward on tight bends!
+    for (let pass = 0; pass < 2; pass++) {
+      for (let i = 2; i < last; i++) {
+        const bdx = bodyX[i] - bodyX[i - 1];
+        const bdy = bodyY[i] - bodyY[i - 1];
+        const bLen = Math.hypot(bdx, bdy) || 1;
+        const ux = bdx / bLen, uy = bdy / bLen;
+        const minStep = bLen * 0.28;
+
+        const lDot = (leftX[i] - leftX[i - 1]) * ux + (leftY[i] - leftY[i - 1]) * uy;
+        if (lDot < minStep) {
+          const push = minStep - lDot;
+          leftX[i] += ux * push;
+          leftY[i] += uy * push;
+        }
+        const rDot = (rightX[i] - rightX[i - 1]) * ux + (rightY[i] - rightY[i - 1]) * uy;
+        if (rDot < minStep) {
+          const push = minStep - rDot;
+          rightX[i] += ux * push;
+          rightY[i] += uy * push;
+        }
+      }
+    }
+
     if (minX < globalMinX) globalMinX = minX;
     if (maxX > globalMaxX) globalMaxX = maxX;
     if (minY < globalMinY) globalMinY = minY;
@@ -695,8 +755,8 @@ function simulateAutonomousPath(seed) {
 
     const headFx = Math.cos(headAngleNow);
     const headFy = Math.sin(headAngleNow);
-    const headSnoutX = rec.jointX[0] + headFx * 26.6 * UNIT;
-    const headSnoutY = rec.jointY[0] + headFy * 26.6 * UNIT;
+    const headSnoutX = bodyX[0] + headFx * 26.6 * UNIT;
+    const headSnoutY = bodyY[0] + headFy * 26.6 * UNIT;
 
     const pad = 14 * UNIT;
     const fr = {
@@ -713,6 +773,7 @@ function simulateAutonomousPath(seed) {
       tailTipY,
       headAngle: headAngleNow,
       tongueProgress: rec.tongueProgress,
+      socialModes: rec.socialModes,
       bbox: {
         minX: Math.min(minX, headSnoutX, tailTipX) - pad,
         maxX: Math.max(maxX, headSnoutX, tailTipX) + pad,
@@ -745,6 +806,9 @@ function simulateAutonomousPath(seed) {
     `selfCrossEvents=${crossEvents.length} (${selfCrossFrames}f), ` +
     `closureErr=${rawErr.toFixed(1)}px, bounds=[x:${globalMinX.toFixed(0)}..${globalMaxX.toFixed(0)}, y:${globalMinY.toFixed(0)}..${globalMaxY.toFixed(0)}]`
   );
+  if (excursionLogs.length > 0) {
+    console.log(`  Socials random over/under excursions: ${excursionLogs.join('  |  ')}`);
+  }
   if (crossEvents.length > 0) {
     console.log(`  Self-crossing starts @ ${crossEvents.map((t) => t.toFixed(1) + 's').join(', ')}`);
   }
@@ -764,9 +828,6 @@ function simulateAutonomousPath(seed) {
 // ============================================================================
 // 4. Pixel-Accurate Self-Crossing Shadow (Matches snake.frag / Website Canvas)
 // ============================================================================
-// Four tightly stacked exact-boundary shells strictly bounded inside the lower
-// ribbon's silhouette (zero background bleed, exact diagonal crossing angle,
-// exact Gaussian falloff from snake.frag's shadowBand).
 const SHADOW_SHELLS = [
   { r: 4.2 * UNIT, darkOp: 0.055, lightOp: 0.036 }, // outer penumbra (~3.3px)
   { r: 2.3 * UNIT, darkOp: 0.095, lightOp: 0.062 }, // mid (~1.8px)
@@ -786,9 +847,8 @@ function capsuleDist(px, py, ax, ay, bx, by, ra, rb) {
 
 function upperSurfaceDist(fr, halfWidths, px, py, sFloor) {
   let best = 1e6;
-  // Head SDF approximation (matches Serpantinum head contour)
   if (sFloor >= 8) {
-    const hx = fr.jointX[0], hy = fr.jointY[0];
+    const hx = fr.bodyX[0], hy = fr.bodyY[0];
     const hfx = Math.cos(fr.headAngle), hfy = Math.sin(fr.headAngle);
     const u = UNIT;
     const d1 = capsuleDist(
@@ -820,7 +880,6 @@ function upperSurfaceDist(fr, halfWidths, px, py, sFloor) {
 }
 
 function sampleRibbonPoint(fr, s, side) {
-  // side: -1 = left edge (slightly inset 0.985), +1 = right edge, 0 = center
   const i0 = Math.max(0, Math.min(SNAKE_SEGMENTS - 2, Math.floor(s)));
   const t = Math.max(0, Math.min(1, s - i0));
   const cx = fr.bodyX[i0] + (fr.bodyX[i0 + 1] - fr.bodyX[i0]) * t;
@@ -836,7 +895,6 @@ function sampleRibbonPoint(fr, s, side) {
 }
 
 function computePieceShadowShells(fr, halfWidths, jMin, jMax) {
-  // Quick coarse check along lower piece centerline
   let nearAny = false;
   for (let j = jMin; j <= jMax; j++) {
     const d = upperSurfaceDist(fr, halfWidths, fr.bodyX[j], fr.bodyY[j], j);
@@ -891,7 +949,6 @@ function computePieceShadowShells(fr, halfWidths, jMin, jMax) {
     }
     if (bestStart === -1) return null;
 
-    // Sub-step linear interpolation for smooth continuous boundary motion
     let s0 = sArr[bestStart];
     if (bestStart > 0 && dArr[bestStart - 1] > r) {
       const denom = dArr[bestStart - 1] - dArr[bestStart];
@@ -912,7 +969,7 @@ function computePieceShadowShells(fr, halfWidths, jMin, jMax) {
     return [s0, s1];
   };
 
-  const N = 4; // 4 points per side = constant 8-vertex closed polygon
+  const N = 4;
   const shells = [];
   let anyShell = false;
 
@@ -925,7 +982,7 @@ function computePieceShadowShells(fr, halfWidths, jMin, jMax) {
       continue;
     }
     anyShell = true;
-    const poly = []; // 8 [x, y] points
+    const poly = [];
 
     if (intL && intR) {
       for (let k = 0; k < N; k++) {
@@ -937,7 +994,6 @@ function computePieceShadowShells(fr, halfWidths, jMin, jMax) {
         poly.push(sampleRibbonPoint(fr, intR[0] + (intR[1] - intR[0]) * u, 1));
       }
     } else {
-      // Partial side graze: trace the hit edge and binary-search the transverse boundary inside the ribbon!
       const hitLeft = Boolean(intL);
       const [s0, s1] = hitLeft ? intL : intR;
       const edgePts = [];
@@ -975,7 +1031,7 @@ function computePieceShadowShells(fr, halfWidths, jMin, jMax) {
 }
 
 // ============================================================================
-// 5. Compact Relative SVG Path Builders (100% Chrome/Firefox/Safari SMIL-safe)
+// 5. Compact Relative SVG Path Builders (Zero-Spike Midpoint-to-Midpoint Joins!)
 // ============================================================================
 const r1 = (n) => {
   const v = Math.round(n * 10) / 10;
@@ -983,8 +1039,7 @@ const r1 = (n) => {
 };
 
 function fmtNum(v) {
-  const r = r1(v);
-  return String(r);
+  return String(r1(v));
 }
 
 function numList(nums) {
@@ -1039,13 +1094,15 @@ function makeRelWriter() {
   };
 }
 
-// 3 fixed overlapping pieces with IDENTICAL overlap knots ([11,13,15] and [25,27,29])
-// so piece seams stay 100% C1 smooth even on the sharpest turns
-const PIECE2_IDX = [25, 27, 29, 33, 37, 40, 43];
-const PIECE1_IDX = [11, 13, 15, 19, 22, 25, 27, 29];
-const PIECE0_IDX = [1, 3, 6, 9, 11, 13, 15];
+// Dense uniform 2-segment knots with IDENTICAL overlapping Beziers across every piece seam:
+// - Piece 0 & Piece 1 share exact quadratic Bezier [mid(12,14) -> ctrl(14) -> mid(14,16)]
+// - Piece 1 & Piece 2 share exact quadratic Bezier [mid(26,28) -> ctrl(28) -> mid(28,30)]
+// Zero un-smoothed endcap corners can ever poke out on a tight turn!
+const PIECE0_IDX = [1, 2, 4, 6, 8, 10, 12, 14, 16];
+const PIECE1_IDX = [12, 14, 16, 18, 20, 22, 24, 26, 28, 30];
+const PIECE2_IDX = [26, 28, 30, 32, 34, 36, 38, 40, 42, 43];
 
-function buildRibbonPath(fr, indices, hasTailCap, ox, oy) {
+function buildRibbonPath(fr, indices, isHeadEnd, hasTailCap, ox, oy) {
   const m = indices.length;
   const lx = (k) => fr.leftX[indices[k]] - ox;
   const ly = (k) => fr.leftY[indices[k]] - oy;
@@ -1053,32 +1110,45 @@ function buildRibbonPath(fr, indices, hasTailCap, ox, oy) {
   const ry = (k) => fr.rightY[indices[k]] - oy;
 
   const w = makeRelWriter();
-  const sx = lx(0), sy = ly(0);
-  w.M(sx, sy);
-  w.l((lx(0) + lx(1)) * 0.5, (ly(0) + ly(1)) * 0.5);
+  let sx, sy;
+  if (isHeadEnd) {
+    sx = lx(0); sy = ly(0);
+    w.M(sx, sy);
+    w.l((lx(0) + lx(1)) * 0.5, (ly(0) + ly(1)) * 0.5);
+  } else {
+    // Start RIGHT at midpoint(0, 1) — never emit an un-smoothed outer corner vertex!
+    sx = (lx(0) + lx(1)) * 0.5;
+    sy = (ly(0) + ly(1)) * 0.5;
+    w.M(sx, sy);
+  }
+
   for (let k = 1; k < m - 1; k++) {
     w.q(lx(k), ly(k), (lx(k) + lx(k + 1)) * 0.5, (ly(k) + ly(k + 1)) * 0.5);
   }
+
   if (hasTailCap) {
     w.q(lx(m - 1), ly(m - 1), fr.tailTipX - ox, fr.tailTipY - oy);
     w.q(rx(m - 1), ry(m - 1), (rx(m - 2) + rx(m - 1)) * 0.5, (ry(m - 2) + ry(m - 1)) * 0.5);
   } else {
-    w.l(lx(m - 1), ly(m - 1));
-    w.l(rx(m - 1), ry(m - 1));
+    // Cross directly from midL(m-2, m-1) to midR(m-2, m-1) — zero sticking-out endcap!
     w.l((rx(m - 2) + rx(m - 1)) * 0.5, (ry(m - 2) + ry(m - 1)) * 0.5);
   }
+
   for (let k = m - 2; k > 0; k--) {
     w.q(rx(k), ry(k), (rx(k) + rx(k - 1)) * 0.5, (ry(k) + ry(k - 1)) * 0.5);
   }
-  w.l(rx(0), ry(0));
+
+  if (isHeadEnd) {
+    w.l(rx(0), ry(0));
+  }
   w.z(sx, sy);
   return w.toString();
 }
 
 // Exact Serpantinum head + inner diamond cutout (fill-rule="evenodd")
 function buildHeadPath(fr, ox, oy) {
-  const hx = fr.jointX[0] - ox;
-  const hy = fr.jointY[0] - oy;
+  const hx = fr.bodyX[0] - ox;
+  const hy = fr.bodyY[0] - oy;
   const hfx = Math.cos(fr.headAngle);
   const hfy = Math.sin(fr.headAngle);
   const hnx = -hfy;
@@ -1117,8 +1187,8 @@ function buildHeadPath(fr, ox, oy) {
 
 // Exact Serpantinum forked tongue path (constant topology)
 function buildTonguePath(fr, ox, oy) {
-  const hx = fr.jointX[0] - ox;
-  const hy = fr.jointY[0] - oy;
+  const hx = fr.bodyX[0] - ox;
+  const hy = fr.bodyY[0] - oy;
   const hfx = Math.cos(fr.headAngle);
   const hfy = Math.sin(fr.headAngle);
   const hnx = -hfy;
@@ -1170,11 +1240,11 @@ function buildShadowShellPath(fr, poly, fallbackIdx, ox, oy) {
 }
 
 // ============================================================================
-// 6. Adaptive Error-Bounded Keyframe Selection per Slice
+// 6. High-FPS Liquid Keyframe Selection per Slice (and per over/under layer)
 // ============================================================================
 const fmtKT = (v) => (v === 0 ? '0' : v === 1 ? '1' : v.toFixed(5).replace(/0+$/, '').replace(/\.$/, ''));
 
-const ERROR_SAMPLE_IDX = [0, 5, 11, 18, 25, 33, 43];
+const ERROR_SAMPLE_IDX = [0, 4, 9, 15, 21, 28, 35, 43];
 
 function interpError(frames, iA, iB, iM) {
   const fA = frames[iA], fB = frames[iB], fM = frames[iM];
@@ -1186,18 +1256,17 @@ function interpError(frames, iA, iB, iM) {
     const d = Math.hypot(ex, ey);
     if (d > maxErr) maxErr = d;
   }
-  // Also check snout tip so fast head turns stay super crisp
-  const sAx = fA.jointX[0] + Math.cos(fA.headAngle) * 20;
-  const sAy = fA.jointY[0] + Math.sin(fA.headAngle) * 20;
-  const sBx = fB.jointX[0] + Math.cos(fB.headAngle) * 20;
-  const sBy = fB.jointY[0] + Math.sin(fB.headAngle) * 20;
-  const sMx = fM.jointX[0] + Math.cos(fM.headAngle) * 20;
-  const sMy = fM.jointY[0] + Math.sin(fM.headAngle) * 20;
+  const sAx = fA.bodyX[0] + Math.cos(fA.headAngle) * 20;
+  const sAy = fA.bodyY[0] + Math.sin(fA.headAngle) * 20;
+  const sBx = fB.bodyX[0] + Math.cos(fB.headAngle) * 20;
+  const sBy = fB.bodyY[0] + Math.sin(fB.headAngle) * 20;
+  const sMx = fM.bodyX[0] + Math.cos(fM.headAngle) * 20;
+  const sMy = fM.bodyY[0] + Math.sin(fM.headAngle) * 20;
   const hd = Math.hypot((sAx + (sBx - sAx) * u) - sMx, (sAy + (sBy - sAy) * u) - sMy);
   return Math.max(maxErr, hd);
 }
 
-function buildAdaptiveBodyTrack(frames, mask, dilate = 6) {
+function buildAdaptiveBodyTrack(frames, mask, dilate = 4) {
   const n = frames.length;
   const active = new Uint8Array(n);
   for (let i = 0; i < n; i++) {
@@ -1208,11 +1277,11 @@ function buildAdaptiveBodyTrack(frames, mask, dilate = 6) {
   }
 
   const chosen = new Set([0]);
-  // Find contiguous active runs (linearly on [0..n-1])
   let i = 0;
-  const MIN_STEP = 7;   // max ~8.6 fps on tight turns
-  const MAX_STEP = 18;  // min ~3.3 fps on gentle glides
-  const TOL = 2.0;      // px max chord error
+  // 10-15 fps fluid SMIL motion (<=0.65px chord error -> zero rigid-part morphing!)
+  const MIN_STEP = 4;  // 15 fps on turns
+  const MAX_STEP = 6;  // 10 fps on gentle glides
+  const TOL = 0.65;
 
   while (i < n) {
     if (!active[i]) {
@@ -1237,7 +1306,7 @@ function buildAdaptiveBodyTrack(frames, mask, dilate = 6) {
           if (worst > TOL) break;
         }
         if (worst <= TOL) break;
-        next = Math.max(cur + MIN_STEP, cur + Math.floor((next - cur) * 0.65));
+        next = Math.max(cur + MIN_STEP, next - 1);
       }
       chosen.add(next);
       cur = next;
@@ -1264,27 +1333,18 @@ function buildSparseTrack(n, mask, stride) {
   return { sorted, active };
 }
 
-function selectSliceTracks(frames, slice) {
+function buildTracksForMask(frames, slice, bodyMask) {
   const n = frames.length;
-  const margin = 4;
-  const bodyMask = new Uint8Array(n);
+  if (!bodyMask.some((v) => v === 1)) return null;
+
   const tongueMask = new Uint8Array(n);
   const sh2Mask = new Uint8Array(n);
   const sh1Mask = new Uint8Array(n);
-
-  let anyBody = false;
   for (let i = 0; i < n; i++) {
+    if (!bodyMask[i]) continue;
     const fr = frames[i];
-    const inSlice =
-      fr.bbox.maxX >= slice.x0 - margin &&
-      fr.bbox.minX <= slice.x1 + margin &&
-      fr.bbox.maxY >= slice.y0 - margin &&
-      fr.bbox.minY <= slice.y1 + margin;
-    if (!inSlice) continue;
-    bodyMask[i] = 1;
-    anyBody = true;
     if (fr.tongueProgress > 0) {
-      const hx = fr.jointX[0], hy = fr.jointY[0];
+      const hx = fr.bodyX[0], hy = fr.bodyY[0];
       if (hx >= slice.x0 - 28 && hx <= slice.x1 + 28 && hy >= slice.y0 - 28 && hy <= slice.y1 + 28) {
         tongueMask[i] = 1;
       }
@@ -1293,21 +1353,57 @@ function selectSliceTracks(frames, slice) {
     if (fr.sh1Shells) sh1Mask[i] = 1;
   }
 
-  if (!anyBody) return null;
-
-  const bodyTrack = buildAdaptiveBodyTrack(frames, bodyMask, 6);
-  const hasTongue = tongueMask.some((v) => v === 1);
-  const tongueTrack = hasTongue ? buildSparseTrack(n, tongueMask, 2) : null;
-  const hasSh2 = sh2Mask.some((v) => v === 1);
-  const sh2Track = hasSh2 ? buildSparseTrack(n, sh2Mask, 6) : null;
-  const hasSh1 = sh1Mask.some((v) => v === 1);
-  const sh1Track = hasSh1 ? buildSparseTrack(n, sh1Mask, 6) : null;
-
+  const bodyTrack = buildAdaptiveBodyTrack(frames, bodyMask, 4);
+  const tongueTrack = tongueMask.some((v) => v === 1) ? buildSparseTrack(n, tongueMask, 2) : null;
+  const sh2Track = sh2Mask.some((v) => v === 1) ? buildSparseTrack(n, sh2Mask, 4) : null;
+  const sh1Track = sh1Mask.some((v) => v === 1) ? buildSparseTrack(n, sh1Mask, 4) : null;
   return { bodyTrack, tongueTrack, sh2Track, sh1Track };
 }
 
+function selectSliceLayers(frames, slice) {
+  const n = frames.length;
+  const margin = 4;
+
+  if (slice.isHero || slice.btnIdx < 0) {
+    const bodyMask = new Uint8Array(n);
+    for (let i = 0; i < n; i++) {
+      const fr = frames[i];
+      if (
+        fr.bbox.maxX >= slice.x0 - margin &&
+        fr.bbox.minX <= slice.x1 + margin &&
+        fr.bbox.maxY >= slice.y0 - margin &&
+        fr.bbox.minY <= slice.y1 + margin
+      ) {
+        bodyMask[i] = 1;
+      }
+    }
+    const tracks = buildTracksForMask(frames, slice, bodyMask);
+    return tracks ? { over: tracks, under: null } : null;
+  }
+
+  // Bottom social button slice: split disjoint excursions into random 'over' vs 'under' layers!
+  const overMask = new Uint8Array(n);
+  const underMask = new Uint8Array(n);
+  for (let i = 0; i < n; i++) {
+    const fr = frames[i];
+    if (
+      fr.bbox.maxX >= slice.x0 - margin &&
+      fr.bbox.minX <= slice.x1 + margin &&
+      fr.bbox.maxY >= slice.y0 - margin &&
+      fr.bbox.minY <= slice.y1 + margin
+    ) {
+      if (fr.socialModes[slice.btnIdx] === 'under') underMask[i] = 1;
+      else overMask[i] = 1;
+    }
+  }
+  const over = buildTracksForMask(frames, slice, overMask);
+  const under = buildTracksForMask(frames, slice, underMask);
+  if (!over && !under) return null;
+  return { over, under };
+}
+
 // ============================================================================
-// 7. Build Snake SVG Markup for a Slice + Theme
+// 7. Build Snake SVG Markup for a Layer + Theme
 // ============================================================================
 const THEMES = {
   dark: {
@@ -1324,7 +1420,21 @@ const THEMES = {
   },
 };
 
-function buildSnakeSVGChunk(slice, themeKey, frames, tracks, loopDuration) {
+function buildDefsBlock(slice, themeKey) {
+  const th = THEMES[themeKey];
+  const defsParts = [
+    `<filter id="serp-elev" x="-14%" y="-14%" width="128%" height="128%">` +
+    `<feDropShadow dx="0" dy="1.5" stdDeviation="1.8" flood-color="#000" flood-opacity="${th.elevShadowOpacity}"/>` +
+    `</filter>`,
+  ];
+  if (slice.clipRect) {
+    const [cx, cy, cw, ch, crx] = slice.clipRect;
+    defsParts.push(`<clipPath id="serp-scard"><rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="${crx}"/></clipPath>`);
+  }
+  return `<!--serp-defs-start--><defs>${defsParts.join('')}</defs><!--serp-defs-end-->`;
+}
+
+function buildSnakeGroup(slice, themeKey, frames, tracks, loopDuration, markerTag = 'snake') {
   const th = THEMES[themeKey];
   const n = frames.length;
   const ox = slice.x0;
@@ -1342,22 +1452,13 @@ function buildSnakeSVGChunk(slice, themeKey, frames, tracks, loopDuration) {
     `<animate attributeName="${attr}" values="${values}" keyTimes="${kt}" dur="${dur}" repeatCount="indefinite"${extra}/>`;
 
   const body = makeTrack(tracks.bodyTrack);
-  const p2Vals = body.list.map((k) => buildRibbonPath(k.fr, PIECE2_IDX, true, ox, oy));
-  const p1Vals = body.list.map((k) => buildRibbonPath(k.fr, PIECE1_IDX, false, ox, oy));
-  const p0Vals = body.list.map((k) => buildRibbonPath(k.fr, PIECE0_IDX, false, ox, oy));
+  const p2Vals = body.list.map((k) => buildRibbonPath(k.fr, PIECE2_IDX, false, true, ox, oy));
+  const p1Vals = body.list.map((k) => buildRibbonPath(k.fr, PIECE1_IDX, false, false, ox, oy));
+  const p0Vals = body.list.map((k) => buildRibbonPath(k.fr, PIECE0_IDX, true, false, ox, oy));
   const headVals = body.list.map((k) => buildHeadPath(k.fr, ox, oy));
   const visVals = body.list.map((k) => (k.on ? '1' : '0'));
 
-  const defsParts = [];
-  defsParts.push(
-    `<filter id="serp-elev" x="-14%" y="-14%" width="128%" height="128%">` +
-    `<feDropShadow dx="0" dy="1.5" stdDeviation="1.8" flood-color="#000" flood-opacity="${th.elevShadowOpacity}"/>` +
-    `</filter>`
-  );
-  if (slice.clipRect) {
-    const [cx, cy, cw, ch, crx] = slice.clipRect;
-    defsParts.push(`<clipPath id="serp-scard"><rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="${crx}"/></clipPath>`);
-  }
+  const layerParts = [];
 
   const pushShadowShells = (track, shellProp, fallbackIdx) => {
     const tr = makeTrack(track);
@@ -1381,13 +1482,11 @@ function buildSnakeSVGChunk(slice, themeKey, frames, tracks, loopDuration) {
     }
   };
 
-  const layerParts = [];
-
-  // Piece 2 (tail) + exact 4-shell self-crossing shadow onto Piece 2
+  // Piece 2 (tail) + self-crossing shadow onto Piece 2
   layerParts.push(`<path d="${p2Vals[0]}" fill="${th.fill}">${animAttr('d', p2Vals.join(';'), body.kt)}</path>`);
   if (tracks.sh2Track) pushShadowShells(tracks.sh2Track, 'sh2Shells', 34);
 
-  // Piece 1 (mid) + exact 4-shell self-crossing shadow onto Piece 1
+  // Piece 1 (mid) + self-crossing shadow onto Piece 1
   layerParts.push(`<path d="${p1Vals[0]}" fill="${th.fill}">${animAttr('d', p1Vals.join(';'), body.kt)}</path>`);
   if (tracks.sh1Track) pushShadowShells(tracks.sh1Track, 'sh1Shells', 20);
 
@@ -1425,16 +1524,15 @@ function buildSnakeSVGChunk(slice, themeKey, frames, tracks, loopDuration) {
     : '';
 
   const snakeGroup =
-    `<!--serp-snake-start-->` +
+    `<!--serp-${markerTag}-start-->` +
     `<g class="serp-snake"${clipAttr}>` +
     `<g opacity="${visVals[0]}">${visAnim}` +
     `<g opacity="${th.opacity}" filter="url(#serp-elev)">` +
     layerParts.join('') +
     `</g></g></g>` +
-    `<!--serp-snake-end-->`;
+    `<!--serp-${markerTag}-end-->`;
 
-  const defsBlock = `<!--serp-defs-start--><defs>${defsParts.join('')}</defs><!--serp-defs-end-->`;
-  return { defsBlock, snakeGroup, activeKfs: body.list.filter((k) => k.on).length, totalKfs: body.list.length };
+  return { snakeGroup, activeKfs: body.list.filter((k) => k.on).length, totalKfs: body.list.length };
 }
 
 // ============================================================================
@@ -1444,6 +1542,8 @@ function stripPreviousInjection(svg) {
   let out = svg;
   out = out.replace(/<!--serp-defs-start-->[\s\S]*?<!--serp-defs-end-->/g, '');
   out = out.replace(/<!--serp-snake-start-->[\s\S]*?<!--serp-snake-end-->/g, '');
+  out = out.replace(/<!--serp-snake-over-start-->[\s\S]*?<!--serp-snake-over-end-->/g, '');
+  out = out.replace(/<!--serp-snake-under-start-->[\s\S]*?<!--serp-snake-under-end-->/g, '');
   out = out.replace(/<!--serp-css-start-->[\s\S]*?<!--serp-css-end-->/g, '');
   const fgMatch = out.match(/<!--serp-fg-start-->([\s\S]*?)<!--serp-fg-end-->/);
   if (fgMatch) {
@@ -1482,22 +1582,26 @@ function injectHeroSVG(svg, defsBlock, snakeGroup) {
   return out;
 }
 
-function injectSocialSVG(svg, slice, defsBlock, snakeGroup) {
+function injectSocialSVG(svg, defsBlock, overGroup, underGroup) {
   let out = stripPreviousInjection(svg);
-  if (!snakeGroup) return out;
+  if (!overGroup && !underGroup) return out;
 
   const cssRule = `<!--serp-css-start-->@media (prefers-reduced-motion:reduce){.serp-snake{display:none}}<!--serp-css-end-->`;
   out = out.replace('</style>', `${cssRule}</style>`);
   out = out.replace('</style>', `</style>${defsBlock}`);
 
-  if (slice.mode === 'under') {
+  if (underGroup) {
     const btnAnchor = '<g transform="translate(4 20)">';
     if (out.includes(btnAnchor)) {
-      out = out.replace(btnAnchor, `${snakeGroup}${btnAnchor}`);
-      return out;
+      out = out.replace(btnAnchor, `${underGroup}${btnAnchor}`);
+    } else {
+      out = out.replace('</svg>', `${underGroup}</svg>`);
     }
   }
-  return out.replace('</svg>', `${snakeGroup}</svg>`);
+  if (overGroup) {
+    out = out.replace('</svg>', `${overGroup}</svg>`);
+  }
+  return out;
 }
 
 // ============================================================================
@@ -1508,25 +1612,25 @@ function main() {
   if (seedArg) {
     sim = simulateAutonomousPath(SEED);
   } else {
-    // Pick a high-quality random autonomous roam (tight loop closure, all 5 buttons visited, rich self-crossings)
     let best = null;
-    for (let attempt = 0; attempt < 8; attempt++) {
+    for (let attempt = 0; attempt < 10; attempt++) {
       const cand = simulateAutonomousPath((SEED + attempt * 7919) >>> 0);
-      if (cand.closureErr <= 11 && cand.socVisits >= 3 && cand.visitedCount >= 5 && cand.selfCrossFrames >= 180) {
+      if (cand.closureErr <= 9 && cand.socVisits >= 2 && cand.visitedCount >= 5 && cand.selfCrossFrames >= 140) {
         sim = cand;
         break;
       }
-      if (!best || (cand.visitedCount * 20 - cand.closureErr) > (best.visitedCount * 20 - best.closureErr)) {
-        best = cand;
-      }
+      const score = cand.visitedCount * 22 + Math.min(3, cand.socVisits) * 10 - cand.closureErr;
+      const bestScore = best ? best.visitedCount * 22 + Math.min(3, best.socVisits) * 10 - best.closureErr : -1e9;
+      if (score > bestScore) best = cand;
     }
     if (!sim) sim = best;
   }
+
   const { frames, loopDuration } = sim;
   const report = [];
 
   for (const slice of SLICES) {
-    const tracks = selectSliceTracks(frames, slice);
+    const layers = selectSliceLayers(frames, slice);
     for (const theme of ['dark', 'light']) {
       const fileName = `${slice.name}-${theme}.svg`;
       const filePath = path.join(ASSETS_DIR, fileName);
@@ -1537,25 +1641,39 @@ function main() {
       const raw = fs.readFileSync(filePath, 'utf8');
       let updated;
       let stats = '(untouched - snake stays clear of edges)';
-      if (tracks) {
-        const { defsBlock, snakeGroup, activeKfs, totalKfs } = buildSnakeSVGChunk(
-          slice,
-          theme,
-          frames,
-          tracks,
-          loopDuration
-        );
-        updated = slice.isHero
-          ? injectHeroSVG(raw, defsBlock, snakeGroup)
-          : injectSocialSVG(raw, slice, defsBlock, snakeGroup);
-        const extras = [
-          tracks.tongueTrack ? 'tongue' : null,
-          tracks.sh2Track || tracks.sh1Track ? 'self-shadow' : null,
-        ].filter(Boolean).join(',');
-        stats = `(${activeKfs}/${totalKfs} kfs${extras ? ' + ' + extras : ''})`;
+
+      if (layers) {
+        const defsBlock = buildDefsBlock(slice, theme);
+        if (slice.isHero) {
+          const res = buildSnakeGroup(slice, theme, frames, layers.over, loopDuration, 'snake');
+          updated = injectHeroSVG(raw, defsBlock, res.snakeGroup);
+          const extras = [
+            layers.over.tongueTrack ? 'tongue' : null,
+            layers.over.sh2Track || layers.over.sh1Track ? 'self-shadow' : null,
+          ].filter(Boolean).join(',');
+          stats = `(${res.activeKfs}/${res.totalKfs} kfs${extras ? ' + ' + extras : ''})`;
+        } else {
+          const overRes = layers.over
+            ? buildSnakeGroup(slice, theme, frames, layers.over, loopDuration, 'snake-over')
+            : null;
+          const underRes = layers.under
+            ? buildSnakeGroup(slice, theme, frames, layers.under, loopDuration, 'snake-under')
+            : null;
+          updated = injectSocialSVG(
+            raw,
+            defsBlock,
+            overRes ? overRes.snakeGroup : null,
+            underRes ? underRes.snakeGroup : null
+          );
+          const parts = [];
+          if (overRes) parts.push(`over:${overRes.activeKfs}kfs`);
+          if (underRes) parts.push(`under:${underRes.activeKfs}kfs`);
+          stats = `(${parts.join(', ')})`;
+        }
       } else {
         updated = stripPreviousInjection(raw);
       }
+
       fs.writeFileSync(filePath, updated, 'utf8');
       if (theme === 'dark') {
         report.push(`${fileName.padEnd(20)} ${(updated.length / 1024).toFixed(1).padStart(6)} KB  ${stats}`);
